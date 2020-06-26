@@ -7,8 +7,13 @@
     <string name="FullName">FullName</string>
     <string name="textview">TextView</string>
     <string name="insert">Insert</string>
-    <string name="Adress">Adress</string>
+    <string name="Address">Address</string>
     <string name="Password">Password</string>
     <string name="Phone">Phone</string>
     <string name="Email">Email</string>
+    <string name="id_display">ID : ....</string>
+    <string name="full_name_display">Full Name : ....</string>
+    <string name="phone_number_display">Phone Number : ....</string>
+    <string name="email_display">Email : ....</string>
+    <string name="address_display">Address : ....</string>
 </resources>

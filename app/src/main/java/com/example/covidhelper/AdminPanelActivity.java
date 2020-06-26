@@ -23,7 +23,7 @@ import java.security.NoSuchAlgorithmException;
 public class AdminPanelActivity extends AppCompatActivity {
     //activity's elements
     private Button insert_btn;
-    private EditText full_name, phone, email, password, adress;
+    private EditText full_name, phone, email, password, address;
 
     //auth
 
@@ -36,7 +36,7 @@ public class AdminPanelActivity extends AppCompatActivity {
 
         full_name = findViewById(R.id.fullName);
         phone = findViewById(R.id.phone);
-        adress = findViewById(R.id.adress);
+        address = findViewById(R.id.adress);
         password = findViewById(R.id.password);
         email = findViewById(R.id.email);
         insert_btn = findViewById(R.id.insert);
@@ -57,7 +57,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         final String mail = email.getText().toString().trim();
         final String passw = password.getText().toString().trim();
         final String phone_number = phone.getText().toString().trim();
-        final String adr = adress.getText().toString().trim();
+        final String adr = address.getText().toString().trim();
 
         if (f_name.isEmpty()) {
             full_name.setError("Full name is required");
@@ -84,12 +84,13 @@ public class AdminPanelActivity extends AppCompatActivity {
         }
 
         if (adr.isEmpty()) {
-            adress.setError("Adress is required");
-            adress.requestFocus();
+            address.setError("Adress is required");
+            address.requestFocus();
             return;
         }
 
         my_auth.createUserWithEmailAndPassword(mail, passw)
+
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -109,7 +110,7 @@ public class AdminPanelActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(AdminPanelActivity.this,
-                                                "Registration Successfull",
+                                                "Registration Successful",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
                                         Toast.makeText(AdminPanelActivity.this,
@@ -126,28 +127,4 @@ public class AdminPanelActivity extends AppCompatActivity {
                 });
     }
 
-    private static String md5(final String s) {
-        final String MD5 = "MD5";
-        try {
-            // Create MD5 Hash
-            MessageDigest digest = java.security.MessageDigest
-                    .getInstance(MD5);
-            digest.update(s.getBytes());
-            byte messageDigest[] = digest.digest();
-
-            // Create Hex String
-            StringBuilder hexString = new StringBuilder();
-            for (byte aMessageDigest : messageDigest) {
-                String h = Integer.toHexString(0xFF & aMessageDigest);
-                while (h.length() < 2)
-                    h = "0" + h;
-                hexString.append(h);
-            }
-            return hexString.toString();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return "";
-    }
 }
