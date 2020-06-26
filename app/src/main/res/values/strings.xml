@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Covidhelper</string>
+    <string name="shop_register">Hello and welcome!</string>
+    <string name="shop_name">Name of the Shop</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>
