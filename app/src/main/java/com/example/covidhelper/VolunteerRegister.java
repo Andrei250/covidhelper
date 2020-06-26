@@ -16,52 +16,49 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ShopRegister extends AppCompatActivity {
+public class VolunteerRegister extends AppCompatActivity {
 
     private EditText input_email;
     private EditText input_name;
     private EditText input_phone_num;
     private EditText input_password;
-    private EditText input_address;
 
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_register);
+        setContentView(R.layout.activity_volunteer_register);
 
         // Get Firebase Auth Instance
         auth = FirebaseAuth.getInstance();
 
         Button btn_register = findViewById(R.id.idRegisterButtonTry);
 
-        input_name = findViewById(R.id.idShopName);
+        input_name = findViewById(R.id.idVolunteerName);
         input_phone_num = findViewById(R.id.idPhoneNumber);
         input_password = findViewById(R.id.idPassword);
         input_email = findViewById(R.id.idEmail);
-        input_address = findViewById(R.id.idShopAddress);
 
-        // When clicked registers the shop
+        // When clicked registers the volunteer
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerShop();
+                registerVolunteer();
             }
         });
     }
 
-    private void registerShop () {
+    private void registerVolunteer () {
         // get text from input fields
         final String name = input_name.getText().toString().trim();
         final String phone_number = input_phone_num.getText().toString().trim();
         final String password = input_password.getText().toString().trim();
         final String email = input_email.getText().toString().trim();
-        final String address = input_address.getText().toString().trim();
 
         // check if there are wrong inputs
         if (TextUtils.isEmpty(name)) {
-            Toast.makeText(getApplicationContext(), "Enter shop name!",
+            Toast.makeText(getApplicationContext(), "Enter volunteer's name!",
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -78,12 +75,6 @@ public class ShopRegister extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(address)) {
-            Toast.makeText(getApplicationContext(), "Enter a address!",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Enter a password!",
                     Toast.LENGTH_SHORT).show();
@@ -96,34 +87,34 @@ public class ShopRegister extends AppCompatActivity {
             return;
         }
 
-        // adds shop and shop details into the db
+        // adds volunteer and volunteer's details into the db
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Shop shop = new Shop (name, phone_number, email, address);
+                            Volunteer volunteer = new Volunteer (name, phone_number, email);
 
-                                FirebaseDatabase.getInstance().getReference("Stores")
+                            FirebaseDatabase.getInstance().getReference("Volunteers")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(shop).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(ShopRegister.this,
-                                                        "Registration Successful",
-                                                        Toast.LENGTH_LONG).show();
-                                            }
-                                            else {
-                                                Toast.makeText(ShopRegister.this,
-                                                        task.getException().getMessage(),
-                                                        Toast.LENGTH_LONG).show();
-                                            }
-                                        }
-                                    });
+                                    .setValue(volunteer).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(VolunteerRegister.this,
+                                                "Registration Successful",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                    else {
+                                        Toast.makeText(VolunteerRegister.this,
+                                                task.getException().getMessage(),
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                         }
                         else {
-                            Toast.makeText(ShopRegister.this,
+                            Toast.makeText(VolunteerRegister.this,
                                     task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
