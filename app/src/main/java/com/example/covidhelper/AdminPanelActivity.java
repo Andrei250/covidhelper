@@ -32,11 +32,11 @@ public class AdminPanelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_panel);
+        setContentView(R.layout.activity_admin_panel_create);
 
         full_name = findViewById(R.id.fullName);
         phone = findViewById(R.id.phone);
-        address = findViewById(R.id.adress);
+        address = findViewById(R.id.address);
         password = findViewById(R.id.password);
         email = findViewById(R.id.email);
         insert_btn = findViewById(R.id.insert);
@@ -57,7 +57,7 @@ public class AdminPanelActivity extends AppCompatActivity {
         final String mail = email.getText().toString().trim();
         final String passw = password.getText().toString().trim();
         final String phone_number = phone.getText().toString().trim();
-        final String adr = address.getText().toString().trim();
+        final String add = address.getText().toString().trim();
 
         if (f_name.isEmpty()) {
             full_name.setError("Full name is required");
@@ -83,8 +83,8 @@ public class AdminPanelActivity extends AppCompatActivity {
             return;
         }
 
-        if (adr.isEmpty()) {
-            address.setError("Adress is required");
+        if (add.isEmpty()) {
+            address.setError("Address is required");
             address.requestFocus();
             return;
         }
@@ -100,7 +100,7 @@ public class AdminPanelActivity extends AppCompatActivity {
                                     f_name,
                                     mail,
                                     phone_number,
-                                    adr
+                                    add
                             );
 
                             FirebaseDatabase.getInstance().getReference("Users")

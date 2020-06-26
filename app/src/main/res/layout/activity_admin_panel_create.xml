@@ -43,7 +43,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/Email"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullName"
@@ -65,7 +65,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/adress"
+        android:id="@+id/address"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -90,7 +90,7 @@
         android:hint="@string/Password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adress"
+        app:layout_constraintTop_toBottomOf="@+id/address"
         android:autofillHints="" />
 
     <Button
