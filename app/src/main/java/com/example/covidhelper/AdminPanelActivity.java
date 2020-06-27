@@ -90,7 +90,6 @@ public class AdminPanelActivity extends AppCompatActivity {
         }
 
         my_auth.createUserWithEmailAndPassword(mail, passw)
-
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
