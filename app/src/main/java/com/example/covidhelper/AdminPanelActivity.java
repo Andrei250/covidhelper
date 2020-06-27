@@ -100,7 +100,8 @@ public class AdminPanelActivity extends AppCompatActivity {
                                     f_name,
                                     mail,
                                     phone_number,
-                                    add
+                                    add,
+                                    "0"
                             );
 
                             FirebaseDatabase.getInstance().getReference("Users")

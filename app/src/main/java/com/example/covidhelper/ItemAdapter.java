@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -66,7 +68,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                         }
 
                         if (which == 1) {
-                            //delete
+                            //delete user
+                            Intent intent = new Intent(display_activity, DisplayUsersActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            FirebaseDatabase.getInstance().getReference("Users")
+                                    .child(Uid.get(position)).removeValue();
+                            context.startActivity(intent);
                         }
                     }
                 }).create().show();

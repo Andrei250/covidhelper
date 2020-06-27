@@ -101,7 +101,8 @@ public class ModifyUser extends AppCompatActivity {
                 f_name,
                 mail,
                 phone_number,
-                add
+                add,
+                "0"
         );
 
         db.getReference("Users").child(id)
