@@ -33,7 +33,7 @@ public class VolunteerRegister extends AppCompatActivity {
         // Get Firebase Auth Instance
         auth = FirebaseAuth.getInstance();
 
-        Button btn_register = findViewById(R.id.idRegisterButtonTry);
+        Button btn_register = findViewById(R.id.idRegisterButton);
 
         input_name = findViewById(R.id.idVolunteerName);
         input_phone_num = findViewById(R.id.idPhoneNumber);
@@ -117,7 +117,7 @@ public class VolunteerRegister extends AppCompatActivity {
                             Toast.makeText(VolunteerRegister.this,
                                     task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
-                    }
+                         }
                 });
     }
 }
