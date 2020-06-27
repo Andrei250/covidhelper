@@ -1,16 +1,18 @@
 package com.example.covidhelper;
 
 public class User {
-    private String full_name, email, phone, address;
+    private String full_name, email, phone, address, admin_value;
 
     public User() {
+
     }
 
-    public User(String full_name, String email, String phone, String address) {
+    public User(String full_name, String email, String phone, String address, String admin_value) {
         this.full_name = full_name;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.admin_value = admin_value;
     }
 
     public String getFullName() {
@@ -41,7 +43,7 @@ public class User {
         return address;
     }
 
-    public void setAddress(String Address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 }
