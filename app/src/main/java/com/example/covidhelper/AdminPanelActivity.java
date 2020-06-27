@@ -49,7 +49,6 @@ public class AdminPanelActivity extends AppCompatActivity {
                 registerUser();
             }
         });
-
     }
 
     private void registerUser() {
@@ -82,7 +81,7 @@ public class AdminPanelActivity extends AppCompatActivity {
             password.requestFocus();
             return;
         }
-
+      
         if (add.isEmpty()) {
             address.setError("Address is required");
             address.requestFocus();
@@ -90,7 +89,6 @@ public class AdminPanelActivity extends AppCompatActivity {
         }
 
         my_auth.createUserWithEmailAndPassword(mail, passw)
-
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -127,5 +125,4 @@ public class AdminPanelActivity extends AppCompatActivity {
                     }
                 });
     }
-
 }
