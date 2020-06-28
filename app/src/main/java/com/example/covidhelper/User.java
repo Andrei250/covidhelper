@@ -47,11 +47,11 @@ public class User {
         this.address = address;
     }
 
-    public String getAdmin_value() {
+    public String getAdminValue() {
         return admin_value;
     }
 
-    public void setAdmin_value(String admin_value) {
+    public void setAdminValue(String admin_value) {
         this.admin_value = admin_value;
     }
 }
