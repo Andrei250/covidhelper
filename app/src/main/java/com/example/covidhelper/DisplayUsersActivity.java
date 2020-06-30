@@ -137,7 +137,7 @@ public class DisplayUsersActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //handle other menu item clicks here
-        if (item.getItemId() == R.id.action_settings) {
+        if (item.getItemId() == R.id.action_add_person) {
             Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
