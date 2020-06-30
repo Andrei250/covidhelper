@@ -46,4 +46,12 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String getAdminValue() {
+        return admin_value;
+    }
+
+    public void setAdminValue(String admin_value) {
+        this.admin_value = admin_value;
+    }
 }
