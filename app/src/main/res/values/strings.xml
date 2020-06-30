@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Covidhelper</string>
-    <string name="welcome_msg">Hello and welcome!</string>
-    <string name="shop_name">Name of the Shop</string>
+    <string name="register_your_shop">Register your vendor! </string>
+    <string name="shop_name">Vendor Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -9,7 +9,7 @@
     <string name="phone">Phone</string>
     <string name="name">Name</string>
     <string name="id">Id</string>
-    <string name="FullName">FullName</string>
+    <string name="FullName">Full Name</string>
     <string name="textview">TextView</string>
     <string name="insert">Insert</string>
     <string name="Address">Address</string>
@@ -34,4 +34,9 @@
     <string name="log_in">Log in</string>
     <string name="search">Search</string>
     <string name="settings">Settings</string>
+    <string name="sign_up">Sign up</string>
+    <string name="user_icon">User icon</string>
+    <string name="no_account">Don\'t have an account? Register now!</string>
+    <string name="already_have_account">Already have an account? Sign in here!</string>
+    <string name="register_as_volunteer">Register as a Volunteer!</string>
 </resources>
