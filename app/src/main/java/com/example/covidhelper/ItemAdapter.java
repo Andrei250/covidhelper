@@ -64,7 +64,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
             @Override
             public void onItemLongClick(View view, final int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(display_activity);
-                String[] options = {"Update", "Delete"};
+                String[] options = {"Update", "Delete", "See More Details"};
 
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
@@ -106,6 +106,24 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
                             context.startActivity(intent);
                         }
+
+                        if (which == 2) {
+                            //see more details
+                            String name = items.get(position).getFullName();
+                            String address = items.get(position).getAddress();
+                            String phone = items.get(position).getPhone();
+                            String email = items.get(position).getEmail();
+
+                            Intent intent = new Intent(display_activity, SeeUserDetails.class);
+
+                            intent.putExtra("name", name);
+                            intent.putExtra("address", address);
+                            intent.putExtra("email", email);
+                            intent.putExtra("phone", phone);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                            context.startActivity(intent);
+                        }
                     }
                 }).create().show();
             }
@@ -117,11 +135,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, int position) {
         final User user = items.get(position);
-        holder.id.setText(String.valueOf(position + 1));
-        holder.email.setText(user.getEmail());
-        holder.address.setText(user.getAddress());
+//        holder.id.setText(String.valueOf(position + 1));
+//        holder.email.setText(user.getEmail());
+//        holder.address.setText(user.getAddress());
         holder.name.setText(user.getFullName());
-        holder.phone.setText(user.getPhone());
+       // holder.phone.setText(user.getPhone());
     }
 
     @Override
@@ -130,16 +148,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView id, name, email, phone, address;
+        private TextView name;
         private ViewHolder.ClickListener m_click_listener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            id = itemView.findViewById(R.id.id);
+          //  id = itemView.findViewById(R.id.id);
             name = itemView.findViewById(R.id.name);
-            email = itemView.findViewById(R.id.email);
-            phone = itemView.findViewById(R.id.phone);
-            address = itemView.findViewById(R.id.address);
+//            email = itemView.findViewById(R.id.email);
+//            phone = itemView.findViewById(R.id.phone);
+//            address = itemView.findViewById(R.id.address);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
