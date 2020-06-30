@@ -31,4 +31,6 @@
     <string name="email_display">Email : ....</string>
     <string name="address_display">Address : ....</string>
     <string name="Update">Update</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
 </resources>

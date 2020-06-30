@@ -4,17 +4,38 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.http.HttpResponseCache;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.JsonObject;
+import com.squareup.okhttp.OkHttpClient;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ObjectStreamException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.zip.Inflater;
 
@@ -23,6 +44,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     private List<User> items;
     private List<String> Uid;
     private DisplayUsersActivity display_activity;
+    private RequestQueue request_queue;
 
     public ItemAdapter(DisplayUsersActivity display_activity,Context context, List<User> items, List<String> Uid) {
         this.context = context;
@@ -69,10 +91,19 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
                         if (which == 1) {
                             //delete user
+                            JSONObject data = new JSONObject();
+                            try {
+                                data.put("userEmail", items.get(position).getEmail().toString());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Submit(data);
+
                             Intent intent = new Intent(display_activity, DisplayUsersActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(Uid.get(position)).removeValue();
+
                             context.startActivity(intent);
                         }
                     }
@@ -128,9 +159,31 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         }
     }
 
+    private void Submit(JSONObject data) {
+        final JSONObject saved_data = data;
+        String URL = "https://us-central1-covidhelper-680e7.cloudfunctions.net/deleteUserByEmail";
 
+        request_queue = Volley.newRequestQueue(context.getApplicationContext());
 
+        JsonObjectRequest json_req = new JsonObjectRequest(URL, data, new Response.Listener() {
+            @Override
+            public void onResponse(Object response) {
+                Log.d("POST deleteUserByEmail", response.toString());
+                Toast.makeText(context.getApplicationContext(), "DELETED SUCCESSFULLY", Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //Toast.makeText(context.getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("Error", error.getMessage());
+            }
+        }) {
+            @Override
+            protected Response parseNetworkResponse(NetworkResponse response) {
+                return Response.success(response, HttpHeaderParser.parseCacheHeaders(response));
+            }
+        };
 
-
-
+        request_queue.add(json_req);
+    }
 }
