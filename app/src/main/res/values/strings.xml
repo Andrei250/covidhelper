@@ -10,7 +10,6 @@
     <string name="name">Name</string>
     <string name="id">Id</string>
     <string name="FullName">Full Name</string>
-    <string name="textview">TextView</string>
     <string name="insert">Insert</string>
     <string name="Address">Address</string>
     <string name="Password">Password</string>
@@ -58,4 +57,9 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_bottom_navigation">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="navigationleft">NavigationLeft</string>
 </resources>
