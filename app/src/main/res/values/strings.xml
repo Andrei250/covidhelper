@@ -40,4 +40,8 @@
     <string name="no_account">Don\'t have an account? Register now!</string>
     <string name="already_have_account">Already have an account? Sign in here!</string>
     <string name="register_as_volunteer">Register as a Volunteer!</string>
+    <string name="logo">Logo</string>
+    <string name="vendor_or_volunteer">Are You a Vendor or a Volunteer?</string>
+    <string name="i_am_a_vendor">I am a Vendor</string>
+    <string name="i_am_a_volunteer">I am a Volunteer</string>
 </resources>

@@ -45,11 +45,12 @@
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="80dp"
         android:background="@drawable/bg_middle_square"
+        android:elevation="20dp"
+        android:theme="@style/AppTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:theme="@style/AppTheme">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
             android:id="@+id/idPassword"
@@ -64,10 +65,10 @@
             android:fontFamily="@font/rajdhani"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idPhoneNumber"
-            android:theme="@style/AppTheme"/>
+            app:layout_constraintTop_toBottomOf="@+id/idPhoneNumber" />
 
         <EditText
             android:id="@+id/idVolunteerName"
@@ -82,10 +83,10 @@
             android:fontFamily="@font/rajdhani"
             android:hint="@string/FullName"
             android:inputType="textPersonName"
+            android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:theme="@style/AppTheme"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/idEmail"
@@ -100,10 +101,10 @@
             android:fontFamily="@font/rajdhani"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
+            android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idVolunteerName"
-            android:theme="@style/AppTheme"/>
+            app:layout_constraintTop_toBottomOf="@+id/idVolunteerName" />
 
         <EditText
             android:id="@+id/idPhoneNumber"
@@ -118,11 +119,11 @@
             android:fontFamily="@font/rajdhani"
             android:hint="@string/phone_number"
             android:inputType="phone"
+            android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idEmail"
-            android:theme="@style/AppTheme"/>
+            app:layout_constraintTop_toBottomOf="@+id/idEmail" />
 
         <Button
             android:id="@+id/idRegisterButton"
