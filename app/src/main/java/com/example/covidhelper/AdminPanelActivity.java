@@ -1,5 +1,6 @@
 package com.example.covidhelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,7 @@ public class AdminPanelActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_panel_create);
+        setContentView(R.layout.activity_admin_panel);
 
         full_name = findViewById(R.id.fullName);
         phone = findViewById(R.id.phone);
@@ -118,6 +119,9 @@ public class AdminPanelActivity extends AppCompatActivity {
                                     }
                                 }
                             });
+                            Intent intent = new Intent(AdminPanelActivity.this, DisplayUsersActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            getApplicationContext().startActivity(intent);
                         } else {
                             Toast.makeText(AdminPanelActivity.this,
                                     task.getException().getMessage(), Toast.LENGTH_LONG).show();

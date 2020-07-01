@@ -98,13 +98,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                                 e.printStackTrace();
                             }
                             Submit(data);
-
-                            Intent intent = new Intent(display_activity, DisplayUsersActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(Uid.get(position)).removeValue();
-
-                            context.startActivity(intent);
                         }
 
                         if (which == 2) {

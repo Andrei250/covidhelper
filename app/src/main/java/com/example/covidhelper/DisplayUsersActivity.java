@@ -1,5 +1,6 @@
 package com.example.covidhelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -138,7 +139,10 @@ public class DisplayUsersActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         //handle other menu item clicks here
         if (item.getItemId() == R.id.action_add_person) {
-            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(DisplayUsersActivity.this, AdminPanelActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
