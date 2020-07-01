@@ -40,4 +40,5 @@
     <string name="no_account">Don\'t have an account? Register now!</string>
     <string name="already_have_account">Already have an account? Sign in here!</string>
     <string name="register_as_volunteer">Register as a Volunteer!</string>
+    <string name="update_vulnerable_person">Update Vulnerable Person</string>
 </resources>
