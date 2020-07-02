@@ -13,7 +13,13 @@
         android:theme="@style/Theme.Design.Light.NoActionBar">
         <activity
             android:name=".BottomNavigation"
-            android:label="@string/title_activity_bottom_navigation"></activity>
+            android:label="@string/title_activity_bottom_navigation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".NavigationBar"
             android:label="@string/title_activity_navigation_bar"

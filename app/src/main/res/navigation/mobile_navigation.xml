@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.covidhelper.ui.home.HomeFragment"
+        android:name="com.example.covidhelper.ui.homeAdmin.HomeFragmentAdmin"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_admin" />
 
     <fragment
         android:id="@+id/nav_gallery"

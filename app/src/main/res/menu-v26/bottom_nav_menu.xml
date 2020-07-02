@@ -4,11 +4,13 @@
     <item
         android:id="@+id/navigation_left"
         android:icon="@drawable/ic_baseline_dehaze_24"
+        android:iconTint="@color/colorNavBarItem"
         android:title="@string/navigationleft" />
 
     <item
         android:id="@+id/navigation_notifications_admin"
         android:icon="@drawable/ic_baseline_notifications_grey_24"
+        android:iconTint="@color/colorNavBarItem"
         android:title="@string/title_notifications" />
 
     <item
