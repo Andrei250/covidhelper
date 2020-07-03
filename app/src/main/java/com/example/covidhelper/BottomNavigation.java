@@ -28,6 +28,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class BottomNavigation extends AppCompatActivity {
+    private FirebaseAuth my_auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,15 +40,7 @@ public class BottomNavigation extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                 new HomeFragmentAdmin(), "Home").commit();
 
-
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-//        AppBarConfiguration app_bar_configuration = new AppBarConfiguration.Builder(
-//                R.id.navigation_left, R.id.add_user, R.id.navigation_notifications_admin)
-//                .build();
-//        NavController nav_controller = Navigation.findNavController(this, R.id.nav_host_fragment);
-//        NavigationUI.setupActionBarWithNavController(this, nav_controller, app_bar_configuration);
-//        NavigationUI.setupWithNavController(nav_view, nav_controller);
+        my_auth = FirebaseAuth.getInstance();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener nav_listener =
@@ -71,6 +65,14 @@ public class BottomNavigation extends AppCompatActivity {
                             break;
                     }
 
+//                    assert fragment_id != null;
+//                    if (fragment_id.equals("createVulPerson")) {
+//                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+//                                selected_fragment, fragment_id).commit();
+//
+//
+//                    }
+
                     if (selected_fragment == null) throw new AssertionError();
                     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                             selected_fragment, fragment_id).commit();
@@ -78,5 +80,7 @@ public class BottomNavigation extends AppCompatActivity {
                     return true;
                 }
             };
+
+
 
 }
