@@ -19,7 +19,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".navigation_bar"
+            android:name=".BottomNavigation"
+            android:label="@string/title_activity_bottom_navigation"></activity>
+        <activity
+            android:name=".NavigationBar"
             android:label="@string/title_activity_navigation_bar"
             android:theme="@style/NoActionBar" />
         <activity android:name=".ShopOrVolunteer">
