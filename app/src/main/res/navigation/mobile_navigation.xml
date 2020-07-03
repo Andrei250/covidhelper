@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.covidhelper.ui.home.HomeFragment"
+        android:name="com.example.covidhelper.ui.homeAdmin.HomeFragmentAdmin"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home_admin" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +22,18 @@
         android:name="com.example.covidhelper.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/createVulPersonFragment"
+        android:name="com.example.covidhelper.ui.createVulPerson.createVulPersonFragment"
+        android:label="createVulPersonFragment" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.covidhelper.ui.notifications.NotificationsFragment"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.covidhelper.ui.dashboard.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
 </navigation>
