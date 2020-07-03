@@ -63,4 +63,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="navigationleft">Navigation</string>
     <string name="adduser">Add User</string>
+    <string name="open_admin_nav">Open</string>
+    <string name="close_admin_nav">Close</string>
 </resources>
