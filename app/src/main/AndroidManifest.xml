@@ -11,6 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
+
+        <activity android:name=".HomeShopHome" android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".ShopHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,11 +29,18 @@
         </activity>
         <activity
             android:name=".BottomNavigation"
-            android:label="@string/title_activity_bottom_navigation"></activity>
+            android:label="@string/title_activity_bottom_navigation" />
+
         <activity
-            android:name=".NavigationBar"
-            android:label="@string/title_activity_navigation_bar"
-            android:theme="@style/NoActionBar" />
+            android:name=".NavigationBar">
+<!--            android:label="@string/title_activity_navigation_bar"-->
+<!--            android:theme="@style/NoActionBar">-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ShopOrVolunteer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
