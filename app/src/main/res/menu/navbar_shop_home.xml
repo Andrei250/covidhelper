@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--    those from this group will sta selected when pressed   -->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/idNavBar1"
+            android:icon="@drawable/ic_outline_email_24"
+            android:title="Message" />
+        <item
+            android:id="@+id/idNavBar2"
+            android:icon="@drawable/ic_outline_email_24"
+            android:title="Message" />
+        <item
+            android:id="@+id/idNavBar3"
+            android:icon="@drawable/ic_outline_email_24"
+            android:title="Message" />
+    </group>
+
+    <!--    those act like buttons, they don't stay selected when pressed    -->
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/idNavBar4"
+                android:icon="@drawable/ic_outline_email_24"
+                android:title="Message" />
+            <item
+                android:id="@+id/idNavBar5"
+                android:icon="@drawable/ic_outline_email_24"
+                android:title="Message" />
+        </menu>
+    </item>
+</menu>

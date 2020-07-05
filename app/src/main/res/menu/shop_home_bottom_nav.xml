@@ -3,10 +3,6 @@
 
     <!-- TODO change icons -->
     <item
-        android:id="@+id/idSHMore"
-        android:icon="@drawable/ic_baseline_more_vert_24"
-        android:title="@string/more"/>
-    <item
         android:id="@+id/idSHStats"
         android:icon="@drawable/bottom_icons"
         android:title="@string/statistics" />
