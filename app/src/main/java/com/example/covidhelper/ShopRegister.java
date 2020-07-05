@@ -3,6 +3,7 @@ package com.example.covidhelper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -113,6 +114,10 @@ public class ShopRegister extends AppCompatActivity {
                                                 Toast.makeText(ShopRegister.this,
                                                         "Registration Successful",
                                                         Toast.LENGTH_LONG).show();
+                                                Intent intent = new Intent(getApplicationContext(),
+                                                        HomeShopHome.class);
+                                                startActivity(intent);
+
                                             }
                                             else {
                                                 Toast.makeText(ShopRegister.this,
