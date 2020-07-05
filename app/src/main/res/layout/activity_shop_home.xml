@@ -11,16 +11,15 @@
         android:id="@+id/idFragmentSH"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/idBottomSH"
-        />
+        android:layout_above="@+id/idBottomSH" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/idBottomSH"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/shop_home_bottom_nav"
         android:background="@color/colorPrimary"
-        app:itemIconTint="@color/colorLight" />
+        app:itemIconTint="@color/colorLight"
+        app:menu="@menu/shop_home_bottom_nav" />
 
 </RelativeLayout>

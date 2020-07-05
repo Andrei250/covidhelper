@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".HomeShopHome"
-    tools:openDrawer="start">
+    tools:context=".HomeShopHome">
+<!--    tools:openDrawer="start">-->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -28,14 +28,23 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-    </LinearLayout>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/idBottomSH"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            app:itemIconTint="@color/colorLight"
+            app:menu="@menu/shop_home_bottom_nav" />
+
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/idNavViewHSH"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:id="@+id/idNavViewHSH"
         app:headerLayout="@layout/navbar_shop_home"
-        app:menu="@menu/navbar_shop_home"/>
+        app:menu="@menu/navbar_shop_home" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

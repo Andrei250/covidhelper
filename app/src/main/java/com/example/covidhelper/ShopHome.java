@@ -15,10 +15,4 @@ public class ShopHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_home);
     }
-
-    @Nullable
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_sh, container, false);
-    }
 }

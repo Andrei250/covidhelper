@@ -45,4 +45,16 @@ public class HomeShopHome extends AppCompatActivity {
         }
 
     }
+
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+//        return super.onCreateView(inflater, name, context, attrs);
+//    }
+//
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
+//        return super.onCreateView(name, context, attrs);
+//    }
 }
