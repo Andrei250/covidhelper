@@ -114,10 +114,11 @@ public class ShopRegister extends AppCompatActivity {
                                                 Toast.makeText(ShopRegister.this,
                                                         "Registration Successful",
                                                         Toast.LENGTH_LONG).show();
+
+                                                // if registration is successful, start Shop Home Activity
                                                 Intent intent = new Intent(getApplicationContext(),
                                                         HomeShopHome.class);
                                                 startActivity(intent);
-
                                             }
                                             else {
                                                 Toast.makeText(ShopRegister.this,

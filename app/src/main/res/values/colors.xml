@@ -7,4 +7,5 @@
     <color name="colorLight">#eaeaea</color>
     <color name="black">#000000</color>
     <color name="colorNavBarItem">#6A6A6A</color>
+    <color name="radioChecked">#3A3F48</color>
 </resources>

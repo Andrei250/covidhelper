@@ -68,4 +68,15 @@
     <string name="adduser">Add User</string>
     <string name="open_admin_nav">Open</string>
     <string name="close_admin_nav">Close</string>
+    <string name="update_stock">Update Stock</string>
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THU</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="sunday">SUN</string>
+    <string name="closing">Closing</string>
+    <string name="opening">Opening</string>
+
 </resources>

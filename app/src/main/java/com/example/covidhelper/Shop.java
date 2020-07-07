@@ -1,10 +1,14 @@
 package com.example.covidhelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Shop {
     private String name;
     private String phone_number;
     private String email;
     private String address;
+    Map<String, Schedule> schedule = new HashMap<>();
 
     public Shop () {
     }
@@ -46,5 +50,13 @@ public class Shop {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Map<String, Schedule> getSchedule() {
+        return schedule;
+    }
+
+    public void setSchedule(Map<String, Schedule> schedule) {
+        this.schedule = schedule;
     }
 }

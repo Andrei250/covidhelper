@@ -45,6 +45,8 @@ public class HomeShopHome extends AppCompatActivity {
                 R.string.navigation_drawer_close, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        // TODO uncomment to show user's name
+//        showUserName();
 
         String current_user_id = auth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
@@ -60,8 +62,8 @@ public class HomeShopHome extends AppCompatActivity {
                 Log.v(TAG, error.getMessage());
             }
         });
-    }
 
+    }
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -72,15 +74,20 @@ public class HomeShopHome extends AppCompatActivity {
 
     }
 
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-//        return super.onCreateView(inflater, name, context, attrs);
-//    }
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-//        return super.onCreateView(name, context, attrs);
-//    }
+    private void showUserName () {
+        String current_user_id = auth.getInstance().getCurrentUser().getUid();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
+        reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String shop_name = snapshot.child("name").getValue().toString();
+                getSupportActionBar().setTitle(shop_name);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.v(TAG, error.getMessage());
+            }
+        });
+    }
 }
