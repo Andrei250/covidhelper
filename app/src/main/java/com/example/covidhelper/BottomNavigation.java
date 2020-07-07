@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.covidhelper.ui.adminSettings.AdminSettingsFragment;
 import com.example.covidhelper.ui.createVulPerson.CreateVulPersonFragment;
 import com.example.covidhelper.ui.homeAdmin.HomeFragmentAdmin;
 import com.example.covidhelper.ui.notifications.NotificationsFragment;
@@ -90,18 +91,28 @@ public class BottomNavigation extends AppCompatActivity {
                             fragment_id = 2;
                             break;
                         case R.id.admin_nav_volunteer:
-                            selected_fragment = new NotificationsFragment(); // new
+                            fragment_id = 3;
                             break;
                         case R.id.admin_nav_store:
-                            selected_fragment = new NotificationsFragment(); // new
+                            fragment_id = 4;
                             break;
                         case R.id.admin_nav_settings:
-                            selected_fragment = new HomeFragmentAdmin();
+                            selected_fragment = new AdminSettingsFragment();
                             break;
                     }
 
                     if (fragment_id == 2) {
                         Intent intent = new Intent(getApplicationContext(), DisplayUsersActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getApplicationContext().startActivity(intent);
+                        return true;
+                    } else if (fragment_id == 4) {
+                        Intent intent = new Intent(getApplicationContext(), DisplayStoresActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getApplicationContext().startActivity(intent);
+                        return true;
+                    } else if (fragment_id == 3) {
+                        Intent intent = new Intent(getApplicationContext(), DisplayVolunteersActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         getApplicationContext().startActivity(intent);
                         return true;
