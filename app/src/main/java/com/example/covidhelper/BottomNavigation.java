@@ -90,10 +90,10 @@ public class BottomNavigation extends AppCompatActivity {
                             fragment_id = 2;
                             break;
                         case R.id.admin_nav_volunteer:
-                            selected_fragment = new NotificationsFragment(); // new
+                            fragment_id = 3;
                             break;
                         case R.id.admin_nav_store:
-                            selected_fragment = new NotificationsFragment(); // new
+                            fragment_id = 4;
                             break;
                         case R.id.admin_nav_settings:
                             selected_fragment = new HomeFragmentAdmin();
@@ -102,6 +102,16 @@ public class BottomNavigation extends AppCompatActivity {
 
                     if (fragment_id == 2) {
                         Intent intent = new Intent(getApplicationContext(), DisplayUsersActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getApplicationContext().startActivity(intent);
+                        return true;
+                    } else if (fragment_id == 4) {
+                        Intent intent = new Intent(getApplicationContext(), DisplayStoresActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getApplicationContext().startActivity(intent);
+                        return true;
+                    } else if (fragment_id == 3) {
+                        Intent intent = new Intent(getApplicationContext(), DisplayVolunteersActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         getApplicationContext().startActivity(intent);
                         return true;
