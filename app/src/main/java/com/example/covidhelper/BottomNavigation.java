@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.covidhelper.ui.adminSettings.AdminSettingsFragment;
 import com.example.covidhelper.ui.createVulPerson.CreateVulPersonFragment;
 import com.example.covidhelper.ui.homeAdmin.HomeFragmentAdmin;
 import com.example.covidhelper.ui.notifications.NotificationsFragment;
@@ -96,7 +97,7 @@ public class BottomNavigation extends AppCompatActivity {
                             fragment_id = 4;
                             break;
                         case R.id.admin_nav_settings:
-                            selected_fragment = new HomeFragmentAdmin();
+                            selected_fragment = new AdminSettingsFragment();
                             break;
                     }
 
