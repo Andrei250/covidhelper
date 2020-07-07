@@ -2,22 +2,16 @@ package com.example.covidhelper;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
-import com.example.covidhelper.ui.createVulPerson.createVulPersonFragment;
+import com.example.covidhelper.ui.createVulPerson.CreateVulPersonFragment;
 import com.example.covidhelper.ui.homeAdmin.HomeFragmentAdmin;
 import com.example.covidhelper.ui.notifications.NotificationsFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.covidhelper.ui.showVulPerson.ShowVulPersonFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.AuthResult;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
@@ -30,12 +24,21 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class BottomNavigation extends AppCompatActivity {
     private FirebaseAuth my_auth;
     private DrawerLayout my_drawer_layout;
     private ActionBarDrawerToggle toggle;
     private AppBarConfiguration app_bar_configuration;
+
+    private RecyclerView recycler_view;
+    private List<User> items;
+    private List<String> Uid;
+    private FirebaseDatabase reference;
+    private FirebaseDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +56,9 @@ public class BottomNavigation extends AppCompatActivity {
         toggle.syncState();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        BottomNavigationView nav_view = findViewById(R.id.bottom_navigation_admin);
-        nav_view.setOnNavigationItemSelectedListener(nav_listener);
+
+        BottomNavigationView bottom_nav_view = findViewById(R.id.bottom_navigation_admin);
+        bottom_nav_view.setOnNavigationItemSelectedListener(bottom_nav_listener);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                 new HomeFragmentAdmin(), "Home").commit();
@@ -63,12 +67,55 @@ public class BottomNavigation extends AppCompatActivity {
                 R.id.navigation_notifications_admin,
                 R.id.add_user).build();
 
+        NavigationView left_nav_view = findViewById(R.id.admin_left_nav_view);
+        left_nav_view.setNavigationItemSelectedListener(left_nav_listener);
 
-
+        reference = FirebaseDatabase.getInstance();
         my_auth = FirebaseAuth.getInstance();
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener nav_listener =
+    private NavigationView.OnNavigationItemSelectedListener left_nav_listener =
+            new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selected_fragment = null;
+                    Integer fragment_id = 0;
+
+                    switch (item.getItemId()) {
+                        case R.id.admin_nav_home:
+                            selected_fragment = new HomeFragmentAdmin(); // needs to be changed
+                            break;
+                        case R.id.admin_nav_vulnerable:
+                         //   selected_fragment = new ShowVulPersonFragment();
+                            fragment_id = 2;
+                            break;
+                        case R.id.admin_nav_volunteer:
+                            selected_fragment = new NotificationsFragment(); // new
+                            break;
+                        case R.id.admin_nav_store:
+                            selected_fragment = new NotificationsFragment(); // new
+                            break;
+                        case R.id.admin_nav_settings:
+                            selected_fragment = new HomeFragmentAdmin();
+                            break;
+                    }
+
+                    if (fragment_id == 2) {
+                        Intent intent = new Intent(getApplicationContext(), DisplayUsersActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        getApplicationContext().startActivity(intent);
+                        return true;
+                    }
+
+                    if (selected_fragment == null) throw new AssertionError();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+                            selected_fragment).commit();
+
+                    return true;
+                }
+            };
+
+    private BottomNavigationView.OnNavigationItemSelectedListener bottom_nav_listener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -85,18 +132,10 @@ public class BottomNavigation extends AppCompatActivity {
                             fragment_id = "Notifications";
                             break;
                         case R.id.add_user:
-                            selected_fragment = new createVulPersonFragment();
+                            selected_fragment = new CreateVulPersonFragment();
                             fragment_id = "createVulPerson";
                             break;
                     }
-
-//                    assert fragment_id != null;
-//                    if (fragment_id.equals("createVulPerson")) {
-//                        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-//                                selected_fragment, fragment_id).commit();
-//
-//
-//                    }
 
                     if (selected_fragment == null) throw new AssertionError();
                     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
@@ -114,12 +153,12 @@ public class BottomNavigation extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.navigation_bar, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.navigation_bar, menu);
+//        return true;
+//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -127,6 +166,5 @@ public class BottomNavigation extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, app_bar_configuration)
                 || super.onSupportNavigateUp();
     }
-
 
 }

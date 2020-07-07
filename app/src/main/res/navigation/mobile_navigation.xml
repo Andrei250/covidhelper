@@ -24,7 +24,7 @@
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/createVulPersonFragment"
-        android:name="com.example.covidhelper.ui.createVulPerson.createVulPersonFragment"
+        android:name="com.example.covidhelper.ui.createVulPerson.CreateVulPersonFragment"
         android:label="createVulPersonFragment" />
     <fragment
         android:id="@+id/notificationsFragment"

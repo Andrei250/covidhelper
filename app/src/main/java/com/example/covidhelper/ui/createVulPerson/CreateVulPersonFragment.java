@@ -1,44 +1,34 @@
 package com.example.covidhelper.ui.createVulPerson;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
-import com.example.covidhelper.AdminPanelActivity;
-import com.example.covidhelper.BottomNavigation;
-import com.example.covidhelper.DisplayUsersActivity;
 import com.example.covidhelper.R;
 import com.example.covidhelper.User;
-import com.example.covidhelper.ui.homeAdmin.HomeViewModelAdmin;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class createVulPersonFragment extends Fragment {
-    private createVulPersonModel create_vul_person_model;
+public class CreateVulPersonFragment extends Fragment {
+    private CreateVulPersonModel create_vul_person_model;
     protected Button insert_btn;
     private EditText full_name, phone, email, password, address;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         create_vul_person_model =
-                new ViewModelProvider(this).get(createVulPersonModel.class);
+                new ViewModelProvider(this).get(CreateVulPersonModel.class);
         View root = inflater.inflate(R.layout.activity_admin_panel, container, false);
 
         full_name = root.findViewById(R.id.fullName);

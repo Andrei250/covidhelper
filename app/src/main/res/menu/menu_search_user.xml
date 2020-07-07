@@ -7,9 +7,13 @@
         android:icon="@android:drawable/ic_menu_search"
         android:title="@string/search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
 
     <item
         android:id="@+id/action_add_person"
         android:title="@string/add_person" />
+    <item
+        android:id="@+id/admin_interface"
+        android:title="@string/admin_interface" />
 </menu>
