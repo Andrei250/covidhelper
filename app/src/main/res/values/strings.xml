@@ -68,4 +68,8 @@
     <string name="adduser">Add User</string>
     <string name="open_admin_nav">Open</string>
     <string name="close_admin_nav">Close</string>
+    <string name="vulnerable_panel">Vulnerable Panel</string>
+    <string name="volunteers_panel">Volunteers Panel</string>
+    <string name="stores_panel">Stores Panel</string>
+    <string name="admin_interface">Admin Interface</string>
 </resources>

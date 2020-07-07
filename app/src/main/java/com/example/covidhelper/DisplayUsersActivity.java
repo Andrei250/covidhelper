@@ -43,7 +43,7 @@ public class DisplayUsersActivity extends AppCompatActivity {
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        recycler_view = findViewById(R.id.recycler_view);
+        recycler_view = findViewById(R.id.recycler_view_admin);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this,
                                                             RecyclerView.VERTICAL,
@@ -141,6 +141,12 @@ public class DisplayUsersActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.action_add_person) {
             //Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(DisplayUsersActivity.this, AdminPanelActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getApplicationContext().startActivity(intent);
+        }
+
+        if (item.getItemId() == R.id.admin_interface) {
+            Intent intent = new Intent(DisplayUsersActivity.this, BottomNavigation.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(intent);
         }
