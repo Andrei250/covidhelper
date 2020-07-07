@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,7 +127,8 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
 //        holder.email.setText(user.getEmail());
 //        holder.address.setText(user.getAddress());
         holder.name.setText(shop.getName());
-        // holder.phone.setText(user.getPhone());
+        holder.phone.setText(shop.getPhoneNumber());
+        holder.img.setImageResource(R.drawable.ic_baseline_storefront_white_54);
     }
 
     @Override
@@ -135,15 +137,17 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ViewHolder>{
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView name;
+        private TextView name, phone;
+        private ImageView img;
         private ShopAdapter.ViewHolder.ClickListener m_click_listener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            img = itemView.findViewById(R.id.img_users);
             //  id = itemView.findViewById(R.id.id);
             name = itemView.findViewById(R.id.name);
 //            email = itemView.findViewById(R.id.email);
-//            phone = itemView.findViewById(R.id.phone);
+            phone = itemView.findViewById(R.id.phone);
 //            address = itemView.findViewById(R.id.address);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {

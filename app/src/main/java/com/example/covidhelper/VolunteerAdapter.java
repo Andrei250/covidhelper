@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -122,7 +123,8 @@ public class VolunteerAdapter extends RecyclerView.Adapter<VolunteerAdapter.View
 //        holder.email.setText(user.getEmail());
 //        holder.address.setText(user.getAddress());
         holder.name.setText(volunteer.getName());
-        // holder.phone.setText(user.getPhone());
+        holder.phone.setText(volunteer.getPhoneNumber());
+        holder.img.setImageResource(R.drawable.ic_baseline_account_circle_white_54);
     }
 
     @Override
@@ -131,15 +133,17 @@ public class VolunteerAdapter extends RecyclerView.Adapter<VolunteerAdapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView name;
+        private TextView name, phone;
+        private ImageView img;
         private VolunteerAdapter.ViewHolder.ClickListener m_click_listener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            img = itemView.findViewById(R.id.img_users);
             //  id = itemView.findViewById(R.id.id);
             name = itemView.findViewById(R.id.name);
 //            email = itemView.findViewById(R.id.email);
-//            phone = itemView.findViewById(R.id.phone);
+            phone = itemView.findViewById(R.id.phone);
 //            address = itemView.findViewById(R.id.address);
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
