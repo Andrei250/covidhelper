@@ -78,5 +78,9 @@
     <string name="sunday">SUN</string>
     <string name="closing">Closing</string>
     <string name="opening">Opening</string>
+    <string name="select_opening_closing">Please select if you are choosing \nthe opening or closing hours!</string>
+    <string name="select_a_day">Select a day and update your program!</string>
+    <string name="select_schedule">Select Schedule for your Store!</string>
+    <string name="save">Save</string>
 
 </resources>

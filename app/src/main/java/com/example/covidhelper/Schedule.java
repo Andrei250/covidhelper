@@ -6,6 +6,9 @@ public class Schedule {
     private int closing_hour;
     private int closing_minutes;
 
+    public Schedule() {
+    }
+
     public Schedule(int opening_hour, int opening_minutes, int closing_hour, int closing_minutes) {
         this.opening_hour = opening_hour;
         this.opening_minutes = opening_minutes;
