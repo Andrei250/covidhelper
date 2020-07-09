@@ -6,10 +6,12 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -17,6 +19,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,7 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class HomeShopHome extends AppCompatActivity {
+public class HomeShopHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -36,6 +39,9 @@ public class HomeShopHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_sh);
 
+        NavigationView navigationView = findViewById(R.id.idNavViewHSH);
+        navigationView.setNavigationItemSelectedListener(this);
+
         Toolbar toolbar = findViewById(R.id.idToolBarSH);
         setSupportActionBar(toolbar);
 
@@ -46,6 +52,32 @@ public class HomeShopHome extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        // TODO uncomment/comment to show/hide user's name
+        showUserName();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case (R.id.idShopUpdateSchedule):
+                Intent intent = new Intent(getApplicationContext(), ShopUpdateSchedule.class);
+                startActivity(intent);
+                break;
+        }
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+
+    }
+
+    private void showUserName () {
         String current_user_id = auth.getInstance().getCurrentUser().getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
         reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,26 +93,4 @@ public class HomeShopHome extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
-    }
-
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-//        return super.onCreateView(inflater, name, context, attrs);
-//    }
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-//        return super.onCreateView(name, context, attrs);
-//    }
 }

@@ -21,13 +21,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/idNavBar4"
+                android:id="@+id/idShopUpdateSchedule"
                 android:icon="@drawable/ic_outline_email_24"
-                android:title="Message" />
-            <item
-                android:id="@+id/idNavBar5"
-                android:icon="@drawable/ic_outline_email_24"
-                android:title="Message" />
+                android:title="@string/update_stock" />
         </menu>
     </item>
 </menu>

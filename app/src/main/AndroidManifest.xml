@@ -11,6 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
+      
+        <activity android:name=".ShopUpdateSchedule">
+           <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".ChangeAdminPassword">
             <intent-filter>
@@ -43,7 +51,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".HomeShopHome"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ShopHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,7 +67,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".BottomNavigation"
             android:label="@string/title_activity_bottom_navigation" >
@@ -61,7 +76,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".NavigationBar"
             android:label="@string/title_activity_navigation_bar">
@@ -71,15 +85,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-  <activity android:name=".ShopOrVolunteer">
+        <activity android:name=".ShopOrVolunteer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -87,7 +99,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".VolunteerRegister">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -95,7 +106,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -103,7 +113,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ShopRegister">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -111,7 +120,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".AdminPanelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -119,7 +127,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".DisplayUsersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -127,7 +134,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ModifyUser">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -135,7 +141,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".SeeUserDetails">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
