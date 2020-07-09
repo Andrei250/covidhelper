@@ -8,16 +8,17 @@ public class Shop {
     private String phone_number;
     private String email;
     private String address;
-    Map<String, Schedule> schedule = new HashMap<>();
+    private Map<String, Schedule> schedule = new HashMap<>();
 
     public Shop () {
     }
 
-    public Shop(String name, String phone_number, String email, String address) {
+    public Shop(String name, String phone_number, String email, String address, Map<String, Schedule> schedule) {
         this.name = name;
         this.phone_number = phone_number;
         this.email = email;
         this.address = address;
+        this.schedule = schedule;
     }
 
     public String getName() {

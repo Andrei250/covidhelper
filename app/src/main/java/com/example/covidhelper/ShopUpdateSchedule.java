@@ -2,6 +2,7 @@ package com.example.covidhelper;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -9,10 +10,16 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,6 +27,7 @@ import java.util.Map;
 public class ShopUpdateSchedule extends AppCompatActivity {
 
     private static final int NUMBER_OF_DAYS = 7;
+    public static final String TAG = "ShopUpdateSchedule";
 
     private Map<String, Schedule> schedule = new HashMap<>();
     private TimePicker picker_opening;
@@ -32,6 +40,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
     private String day;
 
     private FirebaseAuth auth;
+    private DatabaseReference database;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -57,6 +66,9 @@ public class ShopUpdateSchedule extends AppCompatActivity {
         picker_closing.setIs24HourView(true);
         picker_opening.setEnabled(false);
         picker_closing.setEnabled(false);
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance().getReference();
 
         picker_opening.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
@@ -94,11 +106,13 @@ public class ShopUpdateSchedule extends AppCompatActivity {
                     Toast.makeText(ShopUpdateSchedule.this,
                             "PLEASE SET SCHEDULE FOR ALL DAYS!", Toast.LENGTH_LONG).show();
                 } else {
-
+                    String current_user_id = auth.getCurrentUser().getUid();
+                    database.child("Stores").child(current_user_id).child("schedule").setValue(schedule);
                 }
             }
         });
     }
+
     public void onRadioButtonClickedDays(View view) {
         if (first_time) {
             changeVisDay();
