@@ -3,11 +3,15 @@ package com.example.covidhelper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ShopUpdateDetails extends AppCompatActivity {
 
     private static String TAG = "ShopUpdateDetails";
+
     private FirebaseAuth auth;
 
     @Override
@@ -26,11 +31,21 @@ public class ShopUpdateDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_update_details);
 
+        ConstraintLayout name = findViewById(R.id.constraintLayout1);
         Toolbar toolbar = findViewById(R.id.idToolBarShopUD);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         showUserName();
+
+        name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_name = new Intent(getApplicationContext(), ShopUpdateName.class);
+                startActivity(intent_name);
+            }
+        });
+
     }
 
     private void showUserName () {
