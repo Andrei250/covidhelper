@@ -31,7 +31,8 @@ public class ShopUpdateDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_update_details);
 
-        ConstraintLayout name = findViewById(R.id.constraintLayout1);
+        ConstraintLayout name = findViewById(R.id.constraintLayout1SD);
+        ConstraintLayout phone = findViewById(R.id.constraintLayout2SD);
         Toolbar toolbar = findViewById(R.id.idToolBarShopUD);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -43,6 +44,14 @@ public class ShopUpdateDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent_name = new Intent(getApplicationContext(), ShopUpdateName.class);
                 startActivity(intent_name);
+            }
+        });
+
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_phone = new Intent(getApplicationContext(), ShopUpdatePhoneNumber.class);
+                startActivity(intent_phone);
             }
         });
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:theme="@style/AppTheme"
-    tools:context=".ShopUpdateName">
+    tools:context=".ShopUpdatePhoneNumber">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/idToolBarShopUDName"
@@ -29,13 +29,13 @@
         app:layout_constraintTop_toBottomOf="@+id/idToolBarShopUDName">
 
         <TextView
-            android:id="@+id/idCurrentName"
+            android:id="@+id/idCurrentPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/shop_name"
+            android:text="@string/phone_number"
             android:textColor="@color/br"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +49,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/rajdhani"
-            android:text="@string/current"
+            android:text="Current"
             android:textColor="@color/br"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,14 +83,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="24dp"
-            android:text="@string/neww"
+            android:text="New"
             android:textColor="@color/colorLight"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/idEditTextNewName"
+            android:id="@+id/idEditTextPhoneNumber"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -100,7 +100,7 @@
             android:ems="10"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:inputType="textPersonName"
+            android:inputType="phone"
             android:selectAllOnFocus="true"
             android:textColor="@color/colorLight"
             android:textColorHighlight="@color/colorAccent"

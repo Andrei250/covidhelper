@@ -1,5 +1,9 @@
 package com.example.covidhelper;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,13 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,17 +20,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ShopUpdateName extends AppCompatActivity {
+public class ShopUpdatePhoneNumber extends AppCompatActivity {
 
-    private static final String TAG = "ShopUpdateName";
-    private TextView current_name;
-    private EditText name;
+    private static final String TAG = "ShopUpdatePhoneNumber";
+    private TextView current_phone_number;
+    private EditText phone_number;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_update_name);
+        setContentView(R.layout.activity_shop_update_phone_number);
+
 
         final String current_user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -42,20 +40,20 @@ public class ShopUpdateName extends AppCompatActivity {
         Button save = findViewById(R.id.idSaveNameBtn);
         Button cancel = findViewById(R.id.idCancelNameBtn);
         Toolbar toolbar = findViewById(R.id.idToolBarShopUDName);
-        current_name = findViewById(R.id.idCurrentName);
-        name = (EditText) findViewById(R.id.idEditTextNewName);
+        current_phone_number = findViewById(R.id.idCurrentPhoneNumber);
+        phone_number = (EditText) findViewById(R.id.idEditTextPhoneNumber);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Change name");
+        getSupportActionBar().setTitle("Change phone number");
 
         useName(current_user_id, reference);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String new_name = name.getText().toString();
-                changeName(new_name, current_user_id, reference);
+                String new_phone_number = phone_number.getText().toString();
+                changeName(new_phone_number, current_user_id, reference);
             }
         });
 
@@ -72,9 +70,9 @@ public class ShopUpdateName extends AppCompatActivity {
         reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String shop_name = snapshot.child("name").getValue().toString();
-                current_name.setText(shop_name);
-                name.setText(shop_name);
+                String shop_phone_number = snapshot.child("phoneNumber").getValue().toString();
+                current_phone_number.setText(shop_phone_number);
+                phone_number.setText(shop_phone_number);
             }
 
             @Override
@@ -86,11 +84,11 @@ public class ShopUpdateName extends AppCompatActivity {
 
     private void changeName(String new_name, String current_user_id, DatabaseReference reference) {
         if (new_name.isEmpty()) {
-            Toast.makeText(ShopUpdateName.this,
+            Toast.makeText(ShopUpdatePhoneNumber.this,
                     "NAME CANNOT BE EMPTY!", Toast.LENGTH_LONG).show();
         } else {
-            reference.child(current_user_id).child("name").setValue(new_name);
-            // TODO  add  onComplete
+            reference.child(current_user_id).child("phoneNumber").setValue(new_name);
+            // TODO add onComplete
         }
     }
 }

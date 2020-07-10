@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idShopAccDetails" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout1"
+        android:id="@+id/constraintLayout1SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
@@ -78,10 +78,10 @@
         android:background="@color/br"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1SD" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
+        android:id="@+id/constraintLayout2SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
@@ -113,10 +113,10 @@
         android:background="@color/br"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2SD" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout4"
+        android:id="@+id/constraintLayout3SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
@@ -148,11 +148,11 @@
         android:background="@color/br"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3SD" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout5"
+        android:id="@+id/constraintLayout4SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
@@ -185,10 +185,10 @@
         android:background="@color/br"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4SD" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout6"
+        android:id="@+id/constraintLayout5SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
@@ -221,7 +221,7 @@
         android:background="@color/br"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5SD" />
 
     <TextView
         android:id="@+id/idShopDataTxt"
@@ -248,7 +248,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idShopDataTxt" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout7"
+        android:id="@+id/constraintLayout6SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
@@ -281,19 +281,19 @@
         android:background="@color/br"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout7" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6SD" />
 
     <View
         android:id="@+id/idShopLine9"
         android:layout_width="match_parent"
         android:layout_height="@dimen/br_line"
         android:background="@color/br"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout8"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout6SD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout8"
+        android:id="@+id/constraintLayout7SD"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/blue_btn"
