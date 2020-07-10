@@ -20,40 +20,39 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ShopUpdatePhoneNumber extends AppCompatActivity {
+public class ShopUpdateEmail extends AppCompatActivity {
 
-    private static final String TAG = "ShopUpdatePhoneNumber";
-    private TextView current_phone_number;
-    private EditText phone_number;
+    private static final String TAG = "ShopUpdateEmail";
+    private TextView current_email;
+    private EditText email;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_update_phone_number);
-
+        setContentView(R.layout.activity_shop_update_email);
 
         final String current_user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
 
-        Button save = findViewById(R.id.idSaveNameBtn);
-        Button cancel = findViewById(R.id.idCancelNameBtn);
-        Toolbar toolbar = findViewById(R.id.idToolBarShopUDName);
-        current_phone_number = findViewById(R.id.idCurrentPhoneNumber);
-        phone_number = (EditText) findViewById(R.id.idEditTextPhoneNumber);
+        Button save = findViewById(R.id.idSaveNameBtnE);
+        Button cancel = findViewById(R.id.idCancelNameBtnE);
+        Toolbar toolbar = findViewById(R.id.idToolBarShopUpdateEmail);
+        current_email = findViewById(R.id.idShopCurrentEmail);
+        email = (EditText) findViewById(R.id.idEditTextShopEmail);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Change phone number");
+        getSupportActionBar().setTitle("Change email address");
 
         useName(current_user_id, reference);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String new_phone_number = phone_number.getText().toString();
-                changeName(new_phone_number, current_user_id, reference);
+                String new_email = email.getText().toString();
+                changeName(new_email, current_user_id, reference);
             }
         });
 
@@ -70,9 +69,9 @@ public class ShopUpdatePhoneNumber extends AppCompatActivity {
         reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String shop_phone_number = snapshot.child("phoneNumber").getValue().toString();
-                current_phone_number.setText(shop_phone_number);
-                phone_number.setText(shop_phone_number);
+                String shop_email = snapshot.child("email").getValue().toString();
+                current_email.setText(shop_email);
+                email.setText(shop_email);
             }
 
             @Override
@@ -82,12 +81,12 @@ public class ShopUpdatePhoneNumber extends AppCompatActivity {
         });
     }
 
-    private void changeName(String new_phone_number, String current_user_id, DatabaseReference reference) {
-        if (new_phone_number.isEmpty()) {
-            Toast.makeText(ShopUpdatePhoneNumber.this,
-                    "PHONE NUMBER CANNOT BE EMPTY!", Toast.LENGTH_LONG).show();
+    private void changeName(String new_email, String current_user_id, DatabaseReference reference) {
+        if (new_email.isEmpty()) {
+            Toast.makeText(ShopUpdateEmail.this,
+                    "EMAIL CANNOT BE EMPTY!", Toast.LENGTH_LONG).show();
         } else {
-            reference.child(current_user_id).child("phoneNumber").setValue(new_phone_number);
+            reference.child(current_user_id).child("email").setValue(new_email);
             // TODO add onComplete
         }
     }
