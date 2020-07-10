@@ -23,7 +23,15 @@
             <item
                 android:id="@+id/idShopUpdateSchedule"
                 android:icon="@drawable/ic_outline_email_24"
+                android:title="@string/update_schedule" />
+            <item
+                android:id="@+id/idShopUpdateStock"
+                android:icon="@drawable/ic_outline_email_24"
                 android:title="@string/update_stock" />
+            <item
+                android:id="@+id/idShopUpdateDetails"
+                android:icon="@drawable/ic_outline_email_24"
+                android:title="@string/update_store_details" />
         </menu>
     </item>
 </menu>

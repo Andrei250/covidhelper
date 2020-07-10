@@ -91,4 +91,10 @@
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
     <string name="submit">SUBMIT</string>
+    <string name="update_schedule">Update Schedule</string>
+    <string name="update_store_details">Update Store Details</string>
+    <string name="account_details">Account Details</string>
+    <string name="data_and_permissions">Data and permissions</string>
+    <string name="log_out">Log out</string>
+    <string name="deactivate">Deactivate your account</string>
 </resources>

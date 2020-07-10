@@ -60,8 +60,16 @@ public class HomeShopHome extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case (R.id.idShopUpdateSchedule):
-                Intent intent = new Intent(getApplicationContext(), ShopUpdateSchedule.class);
-                startActivity(intent);
+                Intent intent_schedule = new Intent(getApplicationContext(), ShopUpdateSchedule.class);
+                startActivity(intent_schedule);
+                break;
+            case (R.id.idShopUpdateStock):
+                Intent intent_stock = new Intent(getApplicationContext(), ShopUpdateStock.class);
+                startActivity(intent_stock);
+                break;
+            case (R.id.idShopUpdateDetails):
+                Intent intent_details = new Intent(getApplicationContext(), ShopUpdateDetails.class);
+                startActivity(intent_details);
                 break;
         }
         return true;
