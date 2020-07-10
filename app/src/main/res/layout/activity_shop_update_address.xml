@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:theme="@style/AppTheme"
-    tools:context=".ShopUpdateEmail">
+    tools:context=".ShopUpdateAddress">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/idToolBarShopUpdateEmail"
+        android:id="@+id/idToolBarShopUpdateAddress"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@drawable/blue_design"
@@ -26,10 +26,10 @@
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idToolBarShopUpdateEmail">
+        app:layout_constraintTop_toBottomOf="@+id/idToolBarShopUpdateAddress">
 
         <TextView
-            android:id="@+id/idShopCurrentEmail"
+            android:id="@+id/idShopCurrentAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -90,7 +90,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/idEditTextShopEmail"
+            android:id="@+id/idEditTextShopAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -100,7 +100,7 @@
             android:ems="10"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:selectAllOnFocus="true"
             android:textColor="@color/colorLight"
             android:textColorHighlight="@color/colorAccent"
@@ -124,7 +124,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/idSaveNameBtnE"
+        android:id="@+id/idSaveNameBtnA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
@@ -136,14 +136,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/idCancelNameBtnE"
+        android:id="@+id/idCancelNameBtnA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:width="150dp"
         android:background="@drawable/button_design"
         android:text="@android:string/cancel"
-        app:layout_constraintBaseline_toBaselineOf="@+id/idSaveNameBtnE"
+        app:layout_constraintBaseline_toBaselineOf="@+id/idSaveNameBtnA"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

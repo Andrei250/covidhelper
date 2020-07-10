@@ -20,39 +20,39 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ShopUpdateEmail extends AppCompatActivity {
+public class ShopUpdateAddress extends AppCompatActivity {
 
     private static final String TAG = "ShopUpdateEmail";
-    private TextView current_email;
-    private EditText email;
+    private TextView current_address;
+    private EditText address;
     private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_update_email);
+        setContentView(R.layout.activity_shop_update_address);
 
         final String current_user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
 
-        Button save = findViewById(R.id.idSaveNameBtnE);
-        Button cancel = findViewById(R.id.idCancelNameBtnE);
-        Toolbar toolbar = findViewById(R.id.idToolBarShopUpdateEmail);
-        current_email = findViewById(R.id.idShopCurrentEmail);
-        email = (EditText) findViewById(R.id.idEditTextShopEmail);
+        Button save = findViewById(R.id.idSaveNameBtnA);
+        Button cancel = findViewById(R.id.idCancelNameBtnA);
+        Toolbar toolbar = findViewById(R.id.idToolBarShopUpdateAddress);
+        current_address= findViewById(R.id.idShopCurrentAddress);
+        address = (EditText) findViewById(R.id.idEditTextShopAddress);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Change email address");
+        getSupportActionBar().setTitle("Change address");
 
         useName(current_user_id, reference);
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String new_email = email.getText().toString().trim();
-                changeName(new_email, current_user_id, reference);
+                String new_address = address.getText().toString().trim();
+                changeName(new_address, current_user_id, reference);
             }
         });
 
@@ -65,13 +65,14 @@ public class ShopUpdateEmail extends AppCompatActivity {
         });
     }
 
+
     private void useName(String current_user_id, DatabaseReference reference) {
         reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String shop_email = snapshot.child("email").getValue().toString().trim();
-                current_email.setText(shop_email);
-                email.setText(shop_email);
+                String shop_address = snapshot.child("address").getValue().toString().trim();
+                current_address.setText(shop_address);
+                address.setText(shop_address);
             }
 
             @Override
@@ -81,12 +82,12 @@ public class ShopUpdateEmail extends AppCompatActivity {
         });
     }
 
-    private void changeName(String new_email, String current_user_id, DatabaseReference reference) {
-        if (new_email.isEmpty()) {
-            Toast.makeText(ShopUpdateEmail.this,
-                    "EMAIL CANNOT BE EMPTY!", Toast.LENGTH_LONG).show();
+    private void changeName(String new_address, String current_user_id, DatabaseReference reference) {
+        if (new_address.isEmpty()) {
+            Toast.makeText(ShopUpdateAddress.this,
+                    "ADDRESS CANNOT BE EMPTY!", Toast.LENGTH_LONG).show();
         } else {
-            reference.child(current_user_id).child("email").setValue(new_email);
+            reference.child(current_user_id).child("address").setValue(new_address);
             // TODO add onComplete
         }
     }

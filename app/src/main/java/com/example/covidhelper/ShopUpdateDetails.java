@@ -34,6 +34,7 @@ public class ShopUpdateDetails extends AppCompatActivity {
         ConstraintLayout name = findViewById(R.id.constraintLayout1SD);
         ConstraintLayout phone = findViewById(R.id.constraintLayout2SD);
         ConstraintLayout email = findViewById(R.id.constraintLayout3SD);
+        ConstraintLayout address = findViewById(R.id.constraintLayout4SD);
 
         Toolbar toolbar = findViewById(R.id.idToolBarShopUD);
         setSupportActionBar(toolbar);
@@ -62,6 +63,14 @@ public class ShopUpdateDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent_email = new Intent(getApplicationContext(), ShopUpdateEmail.class);
                 startActivity(intent_email);
+            }
+        });
+
+        address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_address = new Intent(getApplicationContext(), ShopUpdateAddress.class);
+                startActivity(intent_address);
             }
         });
 
