@@ -64,11 +64,14 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/admin_left_nav_view"
+        android:background="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
+        app:itemTextColor="@animator/bottom_navigation_selector"
+        app:itemIconTint="@animator/bottom_navigation_selector"
         app:menu="@menu/activity_main_drawer" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

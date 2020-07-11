@@ -91,6 +91,7 @@
     <string name="current_password">Current Password</string>
     <string name="new_password">New Password</string>
     <string name="submit">SUBMIT</string>
+    <string name="admin_user">Admin User</string>
     <string name="update_schedule">Update Schedule</string>
     <string name="update_store_details">Update Store Details</string>
     <string name="account_details">Account Details</string>
