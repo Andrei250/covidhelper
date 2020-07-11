@@ -145,7 +145,7 @@ public class DisplayStoresActivity extends AppCompatActivity {
         //handle other menu item clicks here
         if (item.getItemId() == R.id.admin_interface) {
             Intent intent = new Intent(DisplayStoresActivity.this,
-                    BottomNavigation.class);
+                    AdminInterface.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(intent);
         }

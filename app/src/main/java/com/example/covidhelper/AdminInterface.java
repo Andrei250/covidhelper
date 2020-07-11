@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class BottomNavigation extends AppCompatActivity {
+public class AdminInterface extends AppCompatActivity {
     private FirebaseAuth my_auth;
     private DrawerLayout my_drawer_layout;
     private ActionBarDrawerToggle toggle;
@@ -64,7 +64,7 @@ public class BottomNavigation extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                 new HomeFragmentAdmin(), "Home").commit();
 
-        app_bar_configuration = new AppBarConfiguration.Builder(R.id.navigation_left,
+        app_bar_configuration = new AppBarConfiguration.Builder(R.id.home,
                 R.id.navigation_notifications_admin,
                 R.id.add_user).build();
 
@@ -83,9 +83,6 @@ public class BottomNavigation extends AppCompatActivity {
                     Integer fragment_id = 0;
 
                     switch (item.getItemId()) {
-                        case R.id.admin_nav_home:
-                            selected_fragment = new HomeFragmentAdmin(); // needs to be changed
-                            break;
                         case R.id.admin_nav_vulnerable:
                          //   selected_fragment = new ShowVulPersonFragment();
                             fragment_id = 2;
@@ -134,7 +131,7 @@ public class BottomNavigation extends AppCompatActivity {
                     String fragment_id = null;
 
                     switch (item.getItemId()) {
-                        case R.id.navigation_left:
+                        case R.id.home:
                             selected_fragment = new HomeFragmentAdmin(); // needs to be changed
                             fragment_id = "Home";
                             break;

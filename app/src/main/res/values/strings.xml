@@ -101,4 +101,7 @@
     <string name="current">Current</string>
     <string name="neww">New</string>
     <string name="percentage">0%</string>
+    <string name="report">Report</string>
+    <string name="need_help">Need Help</string>
+    <string name="offer_help">Offer Help</string>
 </resources>

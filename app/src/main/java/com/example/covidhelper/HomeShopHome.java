@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -86,11 +87,24 @@ public class HomeShopHome extends AppCompatActivity implements NavigationView.On
     }
 
     private void showUserName () {
-        String current_user_id = auth.getInstance().getCurrentUser().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user == null) {
+            getSupportActionBar().setTitle("Jale");
+            return;
+        }
+
+        String current_user_id = user.getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
         reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if (snapshot.child("name").getValue() == null) {
+                    getSupportActionBar().setTitle("Jale");
+                    return;
+                }
+
                 String shop_name = snapshot.child("name").getValue().toString();
                 getSupportActionBar().setTitle(shop_name);
             }

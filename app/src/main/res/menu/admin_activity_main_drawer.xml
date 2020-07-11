@@ -5,11 +5,6 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/admin_nav_home"
-            android:icon="@drawable/ic_home_black_24dp"
-
-            android:title="@string/menu_home" />
-        <item
             android:id="@+id/admin_nav_vulnerable"
             android:icon="@drawable/ic_baseline_person_24"
             android:title="@string/vulnerable_panel" />
