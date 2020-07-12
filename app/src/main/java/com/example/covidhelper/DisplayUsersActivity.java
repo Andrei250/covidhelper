@@ -13,11 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class DisplayUsersActivity extends AppCompatActivity {
     private RecyclerView recycler_view;
@@ -35,11 +34,22 @@ public class DisplayUsersActivity extends AppCompatActivity {
     private List<String> Uid;
     private DatabaseReference reference;
     private FirebaseDatabase db;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
+
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
@@ -146,7 +156,7 @@ public class DisplayUsersActivity extends AppCompatActivity {
         }
 
         if (item.getItemId() == R.id.admin_interface) {
-            Intent intent = new Intent(DisplayUsersActivity.this, BottomNavigation.class);
+            Intent intent = new Intent(DisplayUsersActivity.this, AdminInterface.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             getApplicationContext().startActivity(intent);
         }

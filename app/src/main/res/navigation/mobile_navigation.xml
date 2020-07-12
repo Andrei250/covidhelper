@@ -22,15 +22,18 @@
         android:name="com.example.covidhelper.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
     <fragment
         android:id="@+id/createVulPersonFragment"
         android:name="com.example.covidhelper.ui.createVulPerson.CreateVulPersonFragment"
         android:label="createVulPersonFragment" />
+
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.example.covidhelper.ui.notifications.NotificationsFragment"
         android:label="fragment_notifications"
         tools:layout="@layout/fragment_notifications" />
+
     <fragment
         android:id="@+id/dashboardFragment"
         android:name="com.example.covidhelper.ui.dashboard.DashboardFragment"

@@ -22,19 +22,26 @@ import com.google.firebase.auth.FirebaseUser;
 public class ChangeAdminPassword extends AppCompatActivity {
     private EditText old_pass, new_pass, repeat_new_pass;
     private Button submit;
-    private FirebaseAuth auth;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
+
         old_pass = findViewById(R.id.old_pass);
         new_pass = findViewById(R.id.new_pass);
         repeat_new_pass = findViewById(R.id.repeat_new_pass);
         submit = findViewById(R.id.submit_change_password);
-
-        auth = FirebaseAuth.getInstance();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +80,7 @@ public class ChangeAdminPassword extends AppCompatActivity {
             return;
         }
 
-        final FirebaseUser user = auth.getCurrentUser();
+        final FirebaseUser user = my_auth.getCurrentUser();
 
         if (user != null) {
             AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), old.toString());

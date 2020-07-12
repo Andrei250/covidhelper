@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,13 +26,21 @@ public class ShopUpdatePhoneNumber extends AppCompatActivity {
     private static final String TAG = "ShopUpdatePhoneNumber";
     private TextView current_phone_number;
     private EditText phone_number;
-    private FirebaseAuth auth;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_update_phone_number);
 
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         final String current_user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
