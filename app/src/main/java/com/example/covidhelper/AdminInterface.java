@@ -12,6 +12,7 @@ import com.example.covidhelper.ui.showVulPerson.ShowVulPersonFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,7 +30,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class BottomNavigation extends AppCompatActivity {
+public class AdminInterface extends AppCompatActivity {
     private FirebaseAuth my_auth;
     private DrawerLayout my_drawer_layout;
     private ActionBarDrawerToggle toggle;
@@ -45,6 +46,17 @@ public class BottomNavigation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation_admin);
+
+        reference = FirebaseDatabase.getInstance();
+        my_auth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         my_drawer_layout = findViewById(R.id.admin_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar_admin_test);
@@ -64,15 +76,12 @@ public class BottomNavigation extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
                 new HomeFragmentAdmin(), "Home").commit();
 
-        app_bar_configuration = new AppBarConfiguration.Builder(R.id.navigation_left,
+        app_bar_configuration = new AppBarConfiguration.Builder(R.id.home,
                 R.id.navigation_notifications_admin,
                 R.id.add_user).build();
 
         NavigationView left_nav_view = findViewById(R.id.admin_left_nav_view);
         left_nav_view.setNavigationItemSelectedListener(left_nav_listener);
-
-        reference = FirebaseDatabase.getInstance();
-        my_auth = FirebaseAuth.getInstance();
     }
 
     private NavigationView.OnNavigationItemSelectedListener left_nav_listener =
@@ -83,9 +92,6 @@ public class BottomNavigation extends AppCompatActivity {
                     Integer fragment_id = 0;
 
                     switch (item.getItemId()) {
-                        case R.id.admin_nav_home:
-                            selected_fragment = new HomeFragmentAdmin(); // needs to be changed
-                            break;
                         case R.id.admin_nav_vulnerable:
                          //   selected_fragment = new ShowVulPersonFragment();
                             fragment_id = 2;
@@ -98,6 +104,9 @@ public class BottomNavigation extends AppCompatActivity {
                             break;
                         case R.id.admin_nav_settings:
                             selected_fragment = new AdminSettingsFragment();
+                            break;
+                        case R.id.admin_nav_logout:
+                            selected_fragment = new HomeFragmentAdmin();
                             break;
                     }
 
@@ -134,7 +143,7 @@ public class BottomNavigation extends AppCompatActivity {
                     String fragment_id = null;
 
                     switch (item.getItemId()) {
-                        case R.id.navigation_left:
+                        case R.id.home:
                             selected_fragment = new HomeFragmentAdmin(); // needs to be changed
                             fragment_id = "Home";
                             break;
@@ -178,4 +187,8 @@ public class BottomNavigation extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

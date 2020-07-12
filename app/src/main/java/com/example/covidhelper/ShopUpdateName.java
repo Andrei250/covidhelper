@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,12 +29,21 @@ public class ShopUpdateName extends AppCompatActivity {
     private static final String TAG = "ShopUpdateName";
     private TextView current_name;
     private EditText name;
-    private FirebaseAuth auth;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_update_name);
+
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         final String current_user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
