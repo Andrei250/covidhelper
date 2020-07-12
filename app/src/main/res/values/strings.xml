@@ -119,4 +119,10 @@
     <string name="report">Report</string>
     <string name="need_help">Need Help</string>
     <string name="offer_help">Offer Help</string>
+    <string name="name_of_the_product">Name of the product</string>
+    <string name="search_for_a_product">Search for a product</string>
+    <string name="new_price">New price</string>
+    <string name="new_name_of_the_product">New name of the product</string>
+    <string name="new_quantity">New quantity</string>
+    <string name="delete">Delete</string>
 </resources>

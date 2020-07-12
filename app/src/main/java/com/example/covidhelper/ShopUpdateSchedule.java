@@ -26,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+    //  TODO toolbar
+
 public class ShopUpdateSchedule extends AppCompatActivity {
 
     private static final int NUMBER_OF_DAYS = 7;
@@ -120,6 +122,14 @@ public class ShopUpdateSchedule extends AppCompatActivity {
                     String current_user_id = auth.getCurrentUser().getUid();
                     database.child("Stores").child(current_user_id).child("schedule").setValue(schedule);
                 }
+            }
+        });
+
+        cancel_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cancel_intent = new Intent(getApplicationContext(), HomeShopHome.class);
+                startActivity(cancel_intent);
             }
         });
     }
