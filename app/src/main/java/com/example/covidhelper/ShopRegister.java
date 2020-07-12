@@ -30,8 +30,8 @@ public class ShopRegister extends AppCompatActivity {
     private EditText input_phone_num;
     private EditText input_password;
     private EditText input_address;
-    Map<String, Schedule> schedule;
-    Map<String, Product> stock;
+    HashMap<String, Schedule> schedule;
+    HashMap<String, Product> stock;
 
     private TextView log_in;
     private ProgressBar prog;

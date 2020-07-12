@@ -31,7 +31,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
     private static final int NUMBER_OF_DAYS = 7;
     public static final String TAG = "ShopUpdateSchedule";
 
-    private Map<String, Schedule> schedule = new HashMap<>();
+    private HashMap<String, Schedule> schedule = new HashMap<>();
     private TimePicker picker_opening;
     private TimePicker picker_closing;
     private TextView text_oc;

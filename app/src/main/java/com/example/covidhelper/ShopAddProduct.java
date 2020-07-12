@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,19 +26,20 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ShopAddProduct extends AppCompatActivity {
+// TODO deal with chaining
+
+public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final String TAG = "ShopAddProduct";
-    private static final double INITIAL_VALUE = -1.0;
+
     private String name;
-    private double quantity = INITIAL_VALUE;
+    private double quantity;
     private String unit;
-    private double price = INITIAL_VALUE;
+    private double price;
     private String current_user_id;
 
-    private Map product = new HashMap<>();
+    private HashMap <String, Product> product = new HashMap<>();
 
-    private FirebaseAuth auth;
     private DatabaseReference reference;
 
     @Override
@@ -48,14 +52,22 @@ public class ShopAddProduct extends AppCompatActivity {
 
         Button add = findViewById(R.id.idAddProdBtn);
         Button cancel = findViewById(R.id.idCancelAddProdBtn);
-
+        Spinner spinner = findViewById(R.id.idShopSpinner);
         Toolbar toolbar = findViewById(R.id.idToolBarShopAddP);
+
+        //  deals with the spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter
+                .createFromResource(this, R.array.spinner_array, R.layout.spinner_design);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+        //  deals with the toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getSupportActionBar().setTitle("Add product");
 
-//        showSize();
+        showSize();
 
         //  when add button is pressed
         add.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +97,7 @@ public class ShopAddProduct extends AppCompatActivity {
                 EditText new_price = findViewById(R.id.idProductPrice);
 
                 boolean verification = verify(new_name.getText().toString(),
-                        new_quantity.getText().toString(), "ana", new_price.getText().toString());
+                        new_quantity.getText().toString(), unit, new_price.getText().toString());
 
                 // if no field is empty then proceed
                 if (verification) {
@@ -93,7 +105,7 @@ public class ShopAddProduct extends AppCompatActivity {
                     price = Double.parseDouble(new_price.getText().toString().trim());
                     quantity = Double.parseDouble(new_quantity.getText().toString().trim());
 
-                    product = (Map) snapshot.child("stock").getValue();
+                    product = (HashMap) snapshot.child("stock").getValue();
 
                     //  if the map si empty then create new map
                     //  else proceed with the adding
@@ -176,5 +188,25 @@ public class ShopAddProduct extends AppCompatActivity {
                 Log.v(TAG, error.getMessage());
             }
         });
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                unit = "Kilograms";
+                break;
+            case 1:
+                unit = "Grams";
+                break;
+            case 2:
+                unit = "Pieces";
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // TODO Auto-generated method stub
     }
 }

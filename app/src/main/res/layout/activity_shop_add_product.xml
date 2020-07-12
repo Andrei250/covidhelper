@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
     android:clickable="false"
+    android:elevation="5dp"
     android:theme="@style/AppTheme"
     tools:context=".ShopAddProduct">
 
@@ -103,11 +104,13 @@
             app:layout_constraintTop_toBottomOf="@+id/idShopProdName" />
 
         <Spinner
-            android:id="@+id/planets_spinner"
+            android:id="@+id/idShopSpinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="@color/colorLight"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="23dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:popupBackground="@color/colorPrimaryDark"
             android:scrollbarSize="10dp"
             android:theme="@style/AppTheme"
             app:layout_constraintStart_toEndOf="@+id/idProdQuantity"
@@ -138,6 +141,7 @@
             android:hint="@string/price"
             android:inputType="number"
             android:textColor="@color/colorLight"
+            android:textColorHighlight="@color/colorAccent"
             android:textColorHint="@color/br"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -147,9 +151,10 @@
             android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:text="@string/lei"
             android:textColor="@color/colorLight"
+            android:textSize="16sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/idProductPrice"
             app:layout_constraintStart_toEndOf="@+id/idProductPrice" />
 
