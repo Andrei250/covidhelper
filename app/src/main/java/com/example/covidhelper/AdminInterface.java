@@ -106,7 +106,7 @@ public class AdminInterface extends AppCompatActivity {
                             selected_fragment = new AdminSettingsFragment();
                             break;
                         case R.id.admin_nav_logout:
-                            selected_fragment = new HomeFragmentAdmin();
+                            fragment_id = 5;
                             break;
                     }
 
@@ -124,6 +124,11 @@ public class AdminInterface extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), DisplayVolunteersActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         getApplicationContext().startActivity(intent);
+                        return true;
+                    } else if (fragment_id == 5) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finish();
                         return true;
                     }
 
