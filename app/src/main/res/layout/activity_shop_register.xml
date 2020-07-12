@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_user_circle_regular" />
+        app:srcCompat="@drawable/ic_user_circle_regular"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/textView"
@@ -80,7 +81,8 @@
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idShopAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/idShopAddress"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/idShopAddress"
@@ -98,7 +100,8 @@
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/idEmail"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/idPhoneNumber"
@@ -116,7 +119,8 @@
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idShopName" />
+            app:layout_constraintTop_toBottomOf="@+id/idShopName"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/idEmail"
@@ -134,7 +138,8 @@
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idPhoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/idPhoneNumber"
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/idShopName"
@@ -152,14 +157,14 @@
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:autofillHints="" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/shopLogIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:clickable="true"
@@ -168,7 +173,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idRegisterButton" />
+            app:layout_constraintTop_toBottomOf="@+id/idRegisterButton"
+            android:focusable="true" />
+
+        <ProgressBar
+            android:id="@+id/progressRegisterShop"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="32dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shopLogIn" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

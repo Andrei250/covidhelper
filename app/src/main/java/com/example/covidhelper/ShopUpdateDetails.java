@@ -25,12 +25,21 @@ public class ShopUpdateDetails extends AppCompatActivity {
 
     private static String TAG = "ShopUpdateDetails";
 
-    private FirebaseAuth auth;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_update_details);
+
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         ConstraintLayout name = findViewById(R.id.constraintLayout1SD);
         ConstraintLayout phone = findViewById(R.id.constraintLayout2SD);

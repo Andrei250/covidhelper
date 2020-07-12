@@ -3,17 +3,21 @@ package com.example.covidhelper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class VolunteerRegister extends AppCompatActivity {
@@ -22,6 +26,8 @@ public class VolunteerRegister extends AppCompatActivity {
     private EditText input_name;
     private EditText input_phone_num;
     private EditText input_password;
+    private TextView log_in;
+    private ProgressBar prog;
 
     private FirebaseAuth auth;
 
@@ -30,8 +36,14 @@ public class VolunteerRegister extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_register);
 
-        // Get Firebase Auth Instance
         auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         Button btn_register = findViewById(R.id.idRegisterButton);
 
@@ -39,12 +51,21 @@ public class VolunteerRegister extends AppCompatActivity {
         input_phone_num = findViewById(R.id.idPhoneNumber);
         input_password = findViewById(R.id.idPassword);
         input_email = findViewById(R.id.idEmail);
+        log_in = findViewById(R.id.volunteerLogIn);
+        prog = findViewById(R.id.progressRegisterVol);
 
         // When clicked registers the volunteer
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 registerVolunteer();
+            }
+        });
+
+        log_in.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
     }
@@ -87,6 +108,7 @@ public class VolunteerRegister extends AppCompatActivity {
             return;
         }
 
+        prog.setVisibility(View.VISIBLE);
         // adds volunteer and volunteer's details into the db
         auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -101,11 +123,17 @@ public class VolunteerRegister extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        prog.setVisibility(View.INVISIBLE);
                                         Toast.makeText(VolunteerRegister.this,
                                                 "Registration Successful",
                                                 Toast.LENGTH_LONG).show();
+
+                                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                        startActivity(intent);
+                                        finish();
                                     }
                                     else {
+                                        prog.setVisibility(View.INVISIBLE);
                                         Toast.makeText(VolunteerRegister.this,
                                                 task.getException().getMessage(),
                                                 Toast.LENGTH_LONG).show();
@@ -114,6 +142,7 @@ public class VolunteerRegister extends AppCompatActivity {
                             });
                         }
                         else {
+                            prog.setVisibility(View.INVISIBLE);
                             Toast.makeText(VolunteerRegister.this,
                                     task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }

@@ -14,34 +14,33 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.covidhelper.DisplayStoresActivity;
-import com.example.covidhelper.DisplayUsersActivity;
-import com.example.covidhelper.DisplayVolunteersActivity;
-import com.example.covidhelper.R;
-import com.example.covidhelper.User;
-import com.example.covidhelper.ui.adminSettings.AdminSettingsFragment;
-import com.example.covidhelper.ui.createVulPerson.CreateVulPersonFragment;
-import com.example.covidhelper.ui.homeAdmin.HomeFragmentAdmin;
 import com.example.covidhelper.ui.needHelpVulPerson.NeedHelpVulPersonFragment;
 import com.example.covidhelper.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.List;
+import com.google.firebase.auth.FirebaseUser;
 
 public class VulnerablePersonInterface extends AppCompatActivity {
     private DrawerLayout my_drawer_layout;
     private ActionBarDrawerToggle toggle;
     private AppBarConfiguration app_bar_configuration;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_nav_vul_person);
+
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         my_drawer_layout = findViewById(R.id.vul_person_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar_vul_person_test);

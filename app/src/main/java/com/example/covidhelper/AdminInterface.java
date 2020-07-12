@@ -12,6 +12,7 @@ import com.example.covidhelper.ui.showVulPerson.ShowVulPersonFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -46,6 +47,17 @@ public class AdminInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation_admin);
 
+        reference = FirebaseDatabase.getInstance();
+        my_auth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
+
         my_drawer_layout = findViewById(R.id.admin_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar_admin_test);
         setSupportActionBar(toolbar);
@@ -70,9 +82,6 @@ public class AdminInterface extends AppCompatActivity {
 
         NavigationView left_nav_view = findViewById(R.id.admin_left_nav_view);
         left_nav_view.setNavigationItemSelectedListener(left_nav_listener);
-
-        reference = FirebaseDatabase.getInstance();
-        my_auth = FirebaseAuth.getInstance();
     }
 
     private NavigationView.OnNavigationItemSelectedListener left_nav_listener =
@@ -95,6 +104,9 @@ public class AdminInterface extends AppCompatActivity {
                             break;
                         case R.id.admin_nav_settings:
                             selected_fragment = new AdminSettingsFragment();
+                            break;
+                        case R.id.admin_nav_logout:
+                            selected_fragment = new HomeFragmentAdmin();
                             break;
                     }
 
@@ -175,4 +187,8 @@ public class AdminInterface extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

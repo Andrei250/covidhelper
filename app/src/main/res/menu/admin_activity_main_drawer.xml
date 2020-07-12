@@ -20,5 +20,9 @@
             android:id="@+id/admin_nav_settings"
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="@string/settings" />
+        <item
+            android:id="@+id/admin_nav_logout"
+            android:icon="@drawable/ic_baseline_power_settings_vul_pers_24"
+            android:title="@string/log_out" />
     </group>
 </menu>

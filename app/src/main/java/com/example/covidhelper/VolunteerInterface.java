@@ -1,5 +1,6 @@
 package com.example.covidhelper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -18,16 +19,28 @@ import com.example.covidhelper.ui.needHelpVulPerson.NeedHelpVulPersonFragment;
 import com.example.covidhelper.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class VolunteerInterface extends AppCompatActivity {
     private DrawerLayout my_drawer_layout;
     private ActionBarDrawerToggle toggle;
     private AppBarConfiguration app_bar_configuration;
+    private FirebaseAuth my_auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bottom_nav_volunteer);
+
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         my_drawer_layout = findViewById(R.id.volunteer_drawer);
         Toolbar toolbar = findViewById(R.id.toolbar_volunteer_test);

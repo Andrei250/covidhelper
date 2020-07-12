@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class CreateVulPersonFragment extends Fragment {
     private CreateVulPersonModel create_vul_person_model;
     protected Button insert_btn;
     private EditText full_name, phone, email, password, address;
+    private ProgressBar prog;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class CreateVulPersonFragment extends Fragment {
         password = root.findViewById(R.id.password);
         email = root.findViewById(R.id.email);
         insert_btn = root.findViewById(R.id.insert);
+        prog = root.findViewById(R.id.progressAddPerson);
 
         insert_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +88,7 @@ public class CreateVulPersonFragment extends Fragment {
             return;
         }
 
+        prog.setVisibility(View.VISIBLE);
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(mail, passw)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -105,10 +109,12 @@ public class CreateVulPersonFragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        prog.setVisibility(View.INVISIBLE);
                                         Toast.makeText(getActivity(),
                                                 "Registration Successful",
                                                 Toast.LENGTH_LONG).show();
                                     } else {
+                                        prog.setVisibility(View.INVISIBLE);
                                         Toast.makeText(getActivity(),
                                                 task.getException().getMessage(),
                                                 Toast.LENGTH_LONG).show();
@@ -116,6 +122,7 @@ public class CreateVulPersonFragment extends Fragment {
                                 }
                             });
                         } else {
+                            prog.setVisibility(View.INVISIBLE);
                             Toast.makeText(getActivity(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }

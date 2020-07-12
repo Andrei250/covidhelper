@@ -32,13 +32,22 @@ public class HomeShopHome extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private FirebaseAuth auth;
+    private FirebaseAuth my_auth;
     public static final String TAG = "HomeShopHome";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_sh);
+
+        my_auth = FirebaseAuth.getInstance();
+        FirebaseUser user = my_auth.getCurrentUser();
+
+        if (user == null) {
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+            finish();
+            return;
+        }
 
         NavigationView navigationView = findViewById(R.id.idNavViewHSH);
         navigationView.setNavigationItemSelectedListener(this);
