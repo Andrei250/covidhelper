@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:clickable="false"
+    android:theme="@style/AppTheme"
+    tools:context=".ShopAddProduct">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/idToolBarShopAddP"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/blue_design"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/idNumberProdStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/between_layouts"
+        android:layout_marginTop="@dimen/between_layouts"
+        android:text="@string/products_in_stock"
+        android:textAppearance="@style/AppTheme"
+        android:textColor="@color/colorNavBarItem"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idToolBarShopAddP" />
+
+    <View
+        android:id="@+id/idShopLine1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/br_line"
+        android:layout_marginTop="@dimen/between_layouts"
+        android:background="@color/br"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idNumberProdStock" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1ADD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idShopLine1">
+
+        <EditText
+            android:id="@+id/idNewProduct"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:autofillHints=""
+            android:backgroundTint="@color/colorLight"
+            android:hint="@string/product_name"
+            android:inputType="text"
+            android:textColor="@color/colorLight"
+            android:textColorHighlight="@color/colorAccent"
+            android:textColorHint="@color/br"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+        <TextView
+            android:id="@+id/idShopProdName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/select_quantity"
+            android:textColor="@color/colorLight"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idNewProduct" />
+
+        <EditText
+            android:id="@+id/idProdQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:autofillHints=""
+            android:backgroundTint="@color/colorLight"
+            android:ems="10"
+            android:hint="@string/number_in_stock"
+            android:inputType="number"
+            android:textColor="@color/colorLight"
+            android:textColorHighlight="@color/colorAccent"
+            android:textColorHint="@color/br"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idShopProdName" />
+
+        <Spinner
+            android:id="@+id/planets_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorLight"
+            android:scrollbarSize="10dp"
+            android:theme="@style/AppTheme"
+            app:layout_constraintStart_toEndOf="@+id/idProdQuantity"
+            app:layout_constraintTop_toBottomOf="@+id/idShopProdName" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/specify_the_name_prod"
+            android:textColor="@color/colorLight"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/idProductPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            android:autofillHints=""
+            android:backgroundTint="@color/colorLight"
+            android:ems="10"
+            android:hint="@string/price"
+            android:inputType="number"
+            android:textColor="@color/colorLight"
+            android:textColorHint="@color/br"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/lei"
+            android:textColor="@color/colorLight"
+            app:layout_constraintBaseline_toBaselineOf="@+id/idProductPrice"
+            app:layout_constraintStart_toEndOf="@+id/idProductPrice" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/select_the_price"
+            android:textColor="@color/colorLight"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idProdQuantity" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/idShopLine2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/br_line"
+        android:background="@color/br"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1ADD" />
+
+    <View
+        android:id="@+id/idShopLine3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/br_line"
+        android:layout_marginBottom="16dp"
+        android:background="@color/br"
+        app:layout_constraintBottom_toTopOf="@+id/idAddProdBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/idAddProdBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_design"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/idCancelAddProdBtn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/button_design"
+        android:text="@string/cancel"
+        app:layout_constraintBaseline_toBaselineOf="@+id/idAddProdBtn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
