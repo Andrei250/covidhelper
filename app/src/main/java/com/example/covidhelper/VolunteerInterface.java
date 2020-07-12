@@ -84,26 +84,16 @@ public class VolunteerInterface extends AppCompatActivity {
                             selected_fragment = new NeedHelpVulPersonFragment(); // needs to be changed
                             break;
                         case R.id.logout:
-                            selected_fragment = new NeedHelpVulPersonFragment(); // needs to be changed
+                            fragment_id = 1;
                             break;
                     }
 
-//                    if (fragment_id == 2) {
-//                        Intent intent = new Intent(getApplicationContext(), DisplayUsersActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        getApplicationContext().startActivity(intent);
-//                        return true;
-//                    } else if (fragment_id == 4) {
-//                        Intent intent = new Intent(getApplicationContext(), DisplayStoresActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        getApplicationContext().startActivity(intent);
-//                        return true;
-//                    } else if (fragment_id == 3) {
-//                        Intent intent = new Intent(getApplicationContext(), DisplayVolunteersActivity.class);
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        getApplicationContext().startActivity(intent);
-//                        return true;
-//                    }
+                    if (fragment_id == 1) {
+                        FirebaseAuth.getInstance().signOut();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                        finish();
+                        return true;
+                    }
 
                     if (selected_fragment == null) throw new AssertionError();
                     getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
