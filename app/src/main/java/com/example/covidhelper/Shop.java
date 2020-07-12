@@ -9,16 +9,19 @@ public class Shop {
     private String email;
     private String address;
     private Map<String, Schedule> schedule = new HashMap<>();
+    private Map<String, Product> stock = new HashMap<>();
 
     public Shop () {
     }
 
-    public Shop(String name, String phone_number, String email, String address, Map<String, Schedule> schedule) {
+    public Shop(String name, String phone_number, String email, String address,
+                Map<String, Schedule> schedule, Map<String, Product> stock) {
         this.name = name;
         this.phone_number = phone_number;
         this.email = email;
         this.address = address;
         this.schedule = schedule;
+        this.stock = stock;
     }
 
     public String getName() {
@@ -57,7 +60,15 @@ public class Shop {
         return schedule;
     }
 
-    public void setSchedule(Map<String, Schedule> schedule) {
+    public void setSchedule(HashMap<String, Schedule> schedule) {
         this.schedule = schedule;
+    }
+
+    public Map<String, Product> getStock() {
+        return stock;
+    }
+
+    public void setStock(HashMap<String, Product> stock) {
+        this.stock = stock;
     }
 }

@@ -17,6 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ShopRegister extends AppCompatActivity {
@@ -27,6 +28,7 @@ public class ShopRegister extends AppCompatActivity {
     private EditText input_password;
     private EditText input_address;
     Map<String, Schedule> schedule;
+    Map<String, Product> stock;
 
     private FirebaseAuth auth;
 
@@ -106,7 +108,7 @@ public class ShopRegister extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Shop shop = new Shop (name, phone_number, email, address, schedule);
+                            Shop shop = new Shop (name, phone_number, email, address, schedule, stock);
 
                                 FirebaseDatabase.getInstance().getReference("Stores")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
