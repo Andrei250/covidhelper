@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Map;
 
 // TODO deal with chaining
 
@@ -38,7 +37,7 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
     private double price;
     private String current_user_id;
 
-    private HashMap <String, Product> product = new HashMap<>();
+    private HashMap<String, Product> product = new HashMap<>();
 
     private DatabaseReference reference;
 
@@ -64,7 +63,6 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
         //  deals with the toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         getSupportActionBar().setTitle("Add product");
 
         showSize();
@@ -87,6 +85,7 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
         });
     }
 
+    // TODO toast when success
     private void addProduct() {
         final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Stores");
         reference.child(current_user_id).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -148,11 +147,12 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
                     "Don't forget the name of the product!", Toast.LENGTH_LONG).show();
             return false;
         }
-//        if (unit.isEmpty()) {
-//            Toast.makeText(ShopAddProduct.this,
-//                    "Don't forget to select the unit!", Toast.LENGTH_LONG).show();
-//                return false;
-//        }
+        // TODO never empty?
+        if (unit.isEmpty()) {
+            Toast.makeText(ShopAddProduct.this,
+                    "Don't forget to select the unit!", Toast.LENGTH_LONG).show();
+            return false;
+        }
         return true;
     }
 
@@ -170,8 +170,8 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 TextView prod_stock = findViewById(R.id.idNumberProdStock);
                 //  copy of the map from firebase
-                Map<String, Product> map_size = new HashMap<>();
-                map_size = (Map) snapshot.child("stock").getValue();
+                HashMap<String, Product> map_size = new HashMap<>();
+                map_size = (HashMap) snapshot.child("stock").getValue();
                 //  if there are products in stock then create a new string with the text that's going to be shown
                 //  else show that there are 0 products (done this to eliminate null pointer)
                 if (map_size != null) {

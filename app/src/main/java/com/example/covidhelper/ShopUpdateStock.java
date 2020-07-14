@@ -35,7 +35,7 @@ public class ShopUpdateStock extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent_phone = new Intent(getApplicationContext(), ShopUpdatePhoneNumber.class);
+                Intent intent_phone = new Intent(getApplicationContext(), ShopUpdateProduct.class);
                 startActivity(intent_phone);
             }
         });

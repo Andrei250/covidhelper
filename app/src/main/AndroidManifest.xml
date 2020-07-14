@@ -11,7 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.Light.NoActionBar">
-        <activity android:name=".ShopAddProduct" android:parentActivityName=".ShopUpdateStock">
+        <activity
+            android:name=".ShopUpdateProduct"
+            android:parentActivityName=".ShopUpdateStock">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ShopAddProduct"
+            android:parentActivityName=".ShopUpdateStock">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +30,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ShopChangePassword" />
-        <activity android:name=".ShopUpdateStock" android:parentActivityName=".HomeShopHome">
+        <activity
+            android:name=".ShopUpdateStock"
+            android:parentActivityName=".HomeShopHome">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,34 +48,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".VulnerablePersonInterface" >
+        <activity android:name=".VulnerablePersonInterface">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".VolunteerInterface" >
+        <activity android:name=".VolunteerInterface">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".LoadingPage">
+        <activity android:name=".LoadingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ShopUpdateEmail"
             android:parentActivityName=".ShopUpdateDetails">
@@ -116,6 +122,7 @@
         <activity android:name=".DisplayStoresActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
