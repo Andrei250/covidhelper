@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Map;
 
 // TODO deal with chaining
 
@@ -38,7 +37,7 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
     private double price;
     private String current_user_id;
 
-    private HashMap <String, Product> product = new HashMap<>();
+    private HashMap<String, Product> product = new HashMap<>();
 
     private DatabaseReference reference;
 
@@ -152,7 +151,7 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
         if (unit.isEmpty()) {
             Toast.makeText(ShopAddProduct.this,
                     "Don't forget to select the unit!", Toast.LENGTH_LONG).show();
-                return false;
+            return false;
         }
         return true;
     }

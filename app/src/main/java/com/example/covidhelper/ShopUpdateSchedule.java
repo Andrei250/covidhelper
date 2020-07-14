@@ -3,7 +3,6 @@ package com.example.covidhelper;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -11,36 +10,30 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
-import java.util.Map;
 
-    //  TODO toolbar
+//  TODO toolbar
 
 public class ShopUpdateSchedule extends AppCompatActivity {
 
-    private static final int NUMBER_OF_DAYS = 7;
     public static final String TAG = "ShopUpdateSchedule";
-
+    private static final int NUMBER_OF_DAYS = 7;
+    boolean is_open;
+    boolean first_time = true;
     private HashMap<String, Schedule> schedule = new HashMap<>();
     private TimePicker picker_opening;
     private TimePicker picker_closing;
     private TextView text_oc;
     private TextView text_update;
     private TextView text_select;
-    boolean is_open;
-    boolean first_time = true;
     private String day;
 
     private FirebaseAuth auth;
@@ -65,7 +58,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
         text_update = findViewById(R.id.idShopTextUpdateSchedule);
         picker_opening = findViewById(R.id.idShopTimeOpening);
         picker_closing = findViewById(R.id.idShopTimeClosing);
-        text_select= findViewById(R.id.idShopTextSelect);
+        text_select = findViewById(R.id.idShopTextSelect);
         Button save_btn = findViewById(R.id.idShopSaveBtn);
         Button cancel_btn = findViewById(R.id.idShopCancelBtn);
 
@@ -90,8 +83,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
                 try {
                     schedule.get(day).setOpening_hour(hourOfDay);
                     schedule.get(day).setOpening_minutes(minute);
-                }
-                catch (NullPointerException e) {
+                } catch (NullPointerException e) {
                     System.out.println("NullPointerException Caught");
                 }
             }
@@ -105,8 +97,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
                 try {
                     schedule.get(day).setClosing_hour(hourOfDay);
                     schedule.get(day).setClosing_minutes(minute);
-                }
-                catch (NullPointerException e) {
+                } catch (NullPointerException e) {
                     System.out.println("NullPointerException Caught");
                 }
             }
@@ -205,7 +196,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
         }
     }
 
-    private void changeVisDay () {
+    private void changeVisDay() {
         text_oc.setVisibility(View.VISIBLE);
         text_update.setVisibility(View.INVISIBLE);
         picker_opening.setVisibility(View.VISIBLE);
@@ -213,7 +204,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
         text_select.setVisibility(View.INVISIBLE);
     }
 
-    private void changeVisOpening () {
+    private void changeVisOpening() {
         picker_opening.setEnabled(true);
         picker_closing.setEnabled(true);
         picker_opening.setVisibility(View.VISIBLE);
@@ -222,7 +213,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
         text_oc.setVisibility(View.INVISIBLE);
     }
 
-    private void changeVisClosing () {
+    private void changeVisClosing() {
         picker_opening.setEnabled(true);
         picker_closing.setEnabled(true);
         picker_opening.setVisibility(View.INVISIBLE);
@@ -231,7 +222,7 @@ public class ShopUpdateSchedule extends AppCompatActivity {
         text_oc.setVisibility(View.INVISIBLE);
     }
 
-    private void initializeHashMap () {
+    private void initializeHashMap() {
         if (!schedule.containsKey(day)) {
             Schedule time = new Schedule(picker_opening.getCurrentHour(), picker_opening.getCurrentMinute(),
                     picker_closing.getCurrentHour(), picker_closing.getCurrentMinute());
