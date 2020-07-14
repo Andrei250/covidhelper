@@ -4,16 +4,16 @@ public class Product {
 
     private String name;
     private double quantity;
-    private String measure_unity;
+    private String measure_unit;
     private double price;
 
     public Product () {
     }
 
-    public Product(String name, double quantity, String measure_unity, double price) {
+    public Product(String name, double quantity, String measure_unit, double price) {
         this.name = name;
         this.quantity = quantity;
-        this.measure_unity = measure_unity;
+        this.measure_unit = measure_unit;
         this.price = price;
     }
 
@@ -33,12 +33,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getMeasureUnity() {
-        return measure_unity;
+    public String getMeasureUnit() {
+        return measure_unit;
     }
 
-    public void setMeasureUnity(String measure_unity) {
-        this.measure_unity = measure_unity;
+    public void setMeasureUnit(String measure_unit) {
+        this.measure_unit = measure_unit;
     }
 
     public double getPrice() {

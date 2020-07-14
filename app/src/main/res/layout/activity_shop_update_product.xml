@@ -24,7 +24,7 @@
 
 
     <View
-        android:id="@+id/idShopLine1"
+        android:id="@+id/idShopLine1UP"
         android:layout_width="match_parent"
         android:layout_height="@dimen/br_line"
         android:layout_marginTop="16dp"
@@ -41,10 +41,10 @@
         android:background="@color/toolbar_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idShopLine1">
+        app:layout_constraintTop_toBottomOf="@+id/idShopLine1UP">
 
         <EditText
-            android:id="@+id/idNewProduct"
+            android:id="@+id/idNewProductNameUP"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -68,14 +68,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="@string/new_quantity"
+            android:text="@string/quantity_in_stock"
             android:textColor="@color/colorLight"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idNewProduct" />
+            app:layout_constraintTop_toBottomOf="@+id/idNewProductNameUP" />
 
         <EditText
-            android:id="@+id/idProdQuantityUP"
+            android:id="@+id/idNewQuantityUP"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -101,7 +101,7 @@
             android:popupBackground="@color/colorPrimaryDark"
             android:scrollbarSize="10dp"
             android:theme="@style/AppTheme"
-            app:layout_constraintStart_toEndOf="@+id/idProdQuantityUP"
+            app:layout_constraintStart_toEndOf="@+id/idNewPriceUP"
             app:layout_constraintTop_toBottomOf="@+id/idShopProdName" />
 
         <TextView
@@ -110,14 +110,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="@string/new_name_of_the_product"
+            android:text="@string/product_name"
             android:textColor="@color/colorLight"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/idProductPriceUP"
+            android:id="@+id/idNewPriceUP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -141,8 +141,8 @@
             android:text="@string/lei"
             android:textColor="@color/colorLight"
             android:textSize="16sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/idProductPriceUP"
-            app:layout_constraintStart_toEndOf="@+id/idProductPriceUP" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/idNewPriceUP"
+            app:layout_constraintStart_toEndOf="@+id/idNewPriceUP" />
 
         <TextView
             android:id="@+id/textView19"
@@ -150,11 +150,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="@string/new_price"
+            android:text="@string/price"
             android:textColor="@color/colorLight"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idProdQuantityUP" />
+            app:layout_constraintTop_toBottomOf="@+id/idNewQuantityUP" />
 
         <Button
             android:id="@+id/idShopDeleteUP"
@@ -169,11 +169,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/idProductPriceUP" />
+            app:layout_constraintTop_toBottomOf="@+id/idNewPriceUP" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
-        android:id="@+id/idShopLine2"
+        android:id="@+id/idShopLine2UP"
         android:layout_width="match_parent"
         android:layout_height="@dimen/br_line"
         android:background="@color/br"
@@ -244,7 +244,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/idSearchedNameUP"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -270,9 +270,10 @@
             android:layout_marginEnd="20dp"
             android:background="@drawable/button_design"
             android:text="@string/search"
-            app:layout_constraintBaseline_toBaselineOf="@+id/editTextTextPersonName"
+            app:layout_constraintBaseline_toBaselineOf="@+id/idSearchedNameUP"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName" />
+            app:layout_constraintStart_toEndOf="@+id/idSearchedNameUP" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
     <View
         android:id="@+id/idShopLine5"
