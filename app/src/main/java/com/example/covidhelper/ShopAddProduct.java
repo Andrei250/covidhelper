@@ -100,7 +100,7 @@ public class ShopAddProduct extends AppCompatActivity implements AdapterView.OnI
 
                 // if no field is empty then proceed
                 if (verification) {
-                    name = new_name.getText().toString().trim().toLowerCase();
+                    name = new_name.getText().toString().trim().toUpperCase();
                     price = Double.parseDouble(new_price.getText().toString().trim());
                     quantity = Double.parseDouble(new_quantity.getText().toString().trim());
 

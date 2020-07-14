@@ -125,4 +125,5 @@
     <string name="new_name_of_the_product">New name of the product</string>
     <string name="new_quantity">New quantity</string>
     <string name="delete">Delete</string>
+    <string name="quantity_in_stock">Quantity in stock</string>
 </resources>
